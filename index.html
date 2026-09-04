@@ -294,10 +294,6 @@
                         <span class="btn-tarot-text">Baralhar Arcanos</span>
                         <span class="btn-tarot-sparkle">✧</span>
                     </button>
-                    <button class="btn-tarot-bookmark" onclick="bookmarkCurrentArcane()" aria-label="Guardar este Arcano como Lembrança" title="Guardar como Lembrança">
-                        <i class="fa-solid fa-ribbon"></i>
-                        <span class="btn-bookmark-text">Guardar Lembrança</span>
-                    </button>
                 </div>
             </div>
 
@@ -506,27 +502,6 @@
             </article>
 
         </div>
-
-        <!-- CONVITE À CARTA SECRETA À LUZ DE VELAS ("TOQUE PARA DESDOBRAR") -->
-        <div class="secret-candle-wrapper reveal-item">
-            <div class="secret-candle-box" onclick="openCandlelightLetter()">
-                <div class="candle-ambient-glow"></div>
-                <div class="mini-candle">
-                    <div class="candle-flame"></div>
-                    <div class="candle-wick"></div>
-                    <div class="candle-wax"></div>
-                </div>
-                <div class="candle-text-group">
-                    <span class="candle-kicker">✦ CONFISSÃO RESERVADA • MEIA-NOITE</span>
-                    <h3 class="candle-heading">Carta Secreta à Luz de Velas</h3>
-                    <p class="candle-desc">Toque para apagar as luzes da página e desdobrar as palavras escritas do coração que só a chama de uma vela pode iluminar.</p>
-                </div>
-                <button class="btn-unfold-letter" aria-label="Desdobrar Carta Secreta">
-                    <span>Desdobrar</span>
-                    <i class="fa-solid fa-envelope-open-text"></i>
-                </button>
-            </div>
-        </div>
     </section>
 
     <!-- SEÇÃO 5: CAPÍTULO IV • TRATADO DA SINTONIA (FREUD, LACAN, JUNG & WINNICOTT) -->
@@ -545,35 +520,33 @@
 
         <!-- ARQUÉTIPO CELESTE DE 13 DE JUNHO (GÊMEOS & MERCÚRIO) -->
         <div class="gemini-archetype-card reveal-item">
-            <div class="gemini-badge-top">
-                <span class="gemini-zodiac-icon">♊</span>
-                <span class="gemini-badge-label">ARQUÉTIPO CELESTE • 13 DE JUNHO</span>
-                <span class="gemini-mercury-icon">☿</span>
-            </div>
-            <div class="gemini-inner-content">
-                <div class="gemini-left-crest">
-                    <div class="gemini-circle-glyph">
+            <div class="gemini-card-halo"></div>
+            <div class="gemini-header-aesthetic">
+                <div class="gemini-glyphs-row">
+                    <span class="zodiac-symbol">♊</span>
+                    <div class="gemini-center-crest">
                         <i class="fa-solid fa-feather-pointed"></i>
                     </div>
-                    <span class="element-tag">ELEMENTO AR • MERCÚRIO</span>
+                    <span class="mercury-symbol">☿</span>
                 </div>
-                <div class="gemini-text-block">
-                    <h3 class="gemini-headline">A Mente Luminosa de 13 de Junho</h3>
-                    <p class="gemini-lead-quote">
-                        "Quem nasce sob o sopro do Ar e a regência de Mercúrio não apenas conversa: tece encantos e transforma o cotidiano em literatura."
-                    </p>
-                    <p class="gemini-description">
-                        Nascida em 13 de junho sob o signo de Gêmeos, Ale é guardiã de uma mente ágil, curiosa e fascinante. Regida por Mercúrio — o astro da comunicação límpida, dos livros e da inteligência perspicaz —, sua presença tem o dom raro de fazer qualquer conversa comum se transformar em poesia.
-                    </p>
-                    <p class="gemini-description">
-                        O elemento Ar confere a ela essa leveza singular: uma mente brilhante que ama aprender, rir e enxergar a beleza nas entrelinhas. Estar com ela é ter a certeza de que a inteligência e a doçura podem, sim, coexistir em perfeita harmonia.
-                    </p>
-                    <div class="gemini-pill-tags">
-                        <span>✦ Intelecto Límpido</span>
-                        <span>✦ Alma de Literatura</span>
-                        <span>✦ Carisma de Mercúrio</span>
-                        <span>✦ Leveza do Ar</span>
-                    </div>
+                <span class="gemini-meta-tag">ARQUÉTIPO CELESTE • 13 DE JUNHO</span>
+                <h3 class="gemini-headline">A Mente Luminosa</h3>
+                <span class="gemini-sub-coord">GÊMEOS & ELEMENTO AR • REGÊNCIA DE MERCÚRIO</span>
+            </div>
+
+            <div class="gemini-body-condensed">
+                <p class="gemini-lead-quote">
+                    "Quem nasce sob o sopro do Ar e a regência de Mercúrio não apenas conversa: tece encantos e transforma o cotidiano em literatura."
+                </p>
+                <p class="gemini-summary-text">
+                    Nascida sob a dança cósmica de Gêmeos, Ale une agilidade intelectual, olhar curioso e uma doçura magnética singular. Regida por Mercúrio — o astro dos livros, da palavra e das ideias livres —, sua presença faz qualquer instante comum ressoar com a leveza e a profundidade da poesia.
+                </p>
+                
+                <div class="gemini-pill-tags">
+                    <span class="pill-item">✦ Intelecto Límpido</span>
+                    <span class="pill-item">✦ Alma Literária</span>
+                    <span class="pill-item">✦ Carisma de Mercúrio</span>
+                    <span class="pill-item">✦ Leveza do Ar</span>
                 </div>
             </div>
         </div>
@@ -927,61 +900,6 @@
             <span>Fotos</span>
         </a>
     </nav>
-
-    <!-- MODAL DE IMERSÃO TOTAL: CARTA SECRETA À LUZ DE VELAS -->
-    <div class="candlelight-overlay" id="candlelight-modal" aria-hidden="true">
-        <div class="candlelight-vignette" onclick="closeCandlelightLetter()"></div>
-        <div class="candlelight-stage">
-            <div class="candle-stand">
-                <div class="flicker-halo"></div>
-                <div class="flame-body"></div>
-                <div class="flame-core"></div>
-                <div class="candle-wick"></div>
-                <div class="candle-stem"></div>
-                <div class="candle-brass-base"></div>
-            </div>
-            
-            <div class="candle-parchment-scroll">
-                <button class="scroll-close-corner" onclick="closeCandlelightLetter()" aria-label="Fechar carta">&times;</button>
-                <div class="scroll-header">
-                    <span class="scroll-symbol">✦ ❦ ✦</span>
-                    <span class="scroll-title">À Minha Estrela Mais Bonita</span>
-                    <span class="scroll-date">13 de Junho • Segredo Revelado</span>
-                </div>
-                <div class="scroll-body">
-                    <p class="scroll-paragraph">
-                        <span class="scroll-drop-cap">Q</span>uando a noite silencia o ritmo frenético do mundo e as luzes se apagam, é a sua lembrança que permanece iluminando os meus pensamentos com uma serenidade que não cabe em teorias.
-                    </p>
-                    <p class="scroll-paragraph">
-                        Eu não precisava de tratados de filosofia nem de cartas de tarô para saber o quanto você é especial, mas criei cada detalhe deste universo para que você nunca, em hipótese alguma, duvide da grandeza da sua luz. Em um cosmos infinito, encontrar a sua doçura, a sua inteligência brilhante e a elegância rara com que você existe é o presente mais bonito que o destino poderia me conceder.
-                    </p>
-                    <p class="scroll-paragraph">
-                        Obrigado por ser esse refúgio de afeto, por cada conversa que faz o tempo parar e pela leveza incomparável do seu riso. Onde quer que o tempo nos leve, a minha admiração por você já está gravada entre as estrelas.
-                    </p>
-                </div>
-                <div class="scroll-signature">
-                    <div class="scroll-seal" title="Chancela de Afeto">A·V</div>
-                    <div class="scroll-sign-text">
-                        <span>Com todo o meu carinho, cuidado e verdade,</span>
-                        <strong class="scroll-name">Sempre ao seu lado ❤️</strong>
-                    </div>
-                </div>
-                <button class="btn-blow-candle" onclick="closeCandlelightLetter()">
-                    <i class="fa-solid fa-wind"></i>
-                    <span>Soprar a vela e guardar a carta</span>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- TOAST DE LEMBRANÇA SALVA -->
-    <div class="bookmark-toast" id="bookmark-toast" role="alert" aria-live="polite">
-        <i class="fa-solid fa-ribbon"></i>
-        <div class="toast-content">
-            <strong id="toast-title">Lembrança Guardada ✧</strong>
-            <small id="toast-message">Frase copiada com carinho para o seu celular.</small>
-        </div>
-    </div>
 
     <!-- LIGHTBOX MODAL PARA AS FOTOS -->
     <div class="lightbox-modal" id="lightbox" onclick="closeLightbox(event)">
