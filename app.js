@@ -22,14 +22,25 @@ document.addEventListener('DOMContentLoaded', () => {
    ========================================================================== */
 function initReadingProgressBar() {
     const progressBar = document.getElementById('reading-progress');
-    if (!progressBar) return;
+    const dock = document.querySelector('.mobile-bottom-dock');
+    let lastScrollY = window.scrollY || 0;
 
     window.addEventListener('scroll', () => {
         const scrollTop = window.scrollY || document.documentElement.scrollTop;
         const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        if (docHeight > 0) {
+        if (progressBar && docHeight > 0) {
             const scrollPercent = (scrollTop / docHeight);
             progressBar.style.transform = `scaleX(${scrollPercent})`;
+        }
+
+        // Auto-esconder dock móvel ao descer para leitura 100% desobstruída
+        if (dock) {
+            if (scrollTop > 80 && scrollTop > lastScrollY + 8) {
+                dock.classList.add('dock-hidden');
+            } else if (scrollTop < lastScrollY - 6 || scrollTop <= 60) {
+                dock.classList.remove('dock-hidden');
+            }
+            lastScrollY = scrollTop;
         }
     }, { passive: true });
 }

@@ -2488,32 +2488,93 @@ body.js-loaded .reveal-item.revealed {
     }
 
     .hero-section {
-        padding: calc(65px + env(safe-area-inset-top, 0px)) 12px calc(105px + env(safe-area-inset-bottom, 12px));
+        min-height: auto;
+        padding: calc(60px + env(safe-area-inset-top, 0px)) 12px calc(95px + env(safe-area-inset-bottom, 12px));
     }
 
     .section-container {
-        padding: 40px 12px calc(95px + env(safe-area-inset-bottom, 12px));
+        padding: 36px 12px calc(90px + env(safe-area-inset-bottom, 12px));
+    }
+
+    .astrolabe-emblem {
+        width: 68px;
+        height: 68px;
+        margin-bottom: 8px;
+    }
+
+    .ring-outer {
+        width: 66px;
+        height: 66px;
+    }
+
+    .ring-inner {
+        width: 52px;
+        height: 52px;
+    }
+
+    .monogram-initials {
+        font-size: 0.95rem;
+    }
+
+    .astrolabe-date {
+        font-size: 0.44rem;
+        margin-top: 1px;
+    }
+
+    .editorial-badge-wrapper {
+        margin-bottom: 8px;
     }
 
     .editorial-badge {
-        font-size: 0.54rem;
+        font-size: 0.52rem;
         letter-spacing: 0.8px;
-        padding: 4px 8px;
+        padding: 3px 8px;
         gap: 5px;
     }
 
     .hero-title {
-        font-size: clamp(1.8rem, 7.2vw, 2.3rem);
+        font-size: 1.78rem;
+        line-height: 1.15;
+        margin-bottom: 4px;
+    }
+
+    .hero-subtitle {
+        font-size: 0.88rem;
+        line-height: 1.35;
+        margin-bottom: 10px;
+    }
+
+    .dedication-name {
+        font-size: 1.12rem;
     }
 
     .clarice-quote-box {
-        padding: 16px 12px;
-        margin: 18px auto 16px;
+        padding: 12px 14px 12px 14px;
+        margin: 10px auto 14px auto;
+        border-left-width: 2.5px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+    }
+
+    .quote-header-tag {
+        font-size: 0.54rem;
+        letter-spacing: 1.2px;
+        margin-bottom: 6px;
     }
 
     .clarice-quote {
-        font-size: 0.98rem;
-        line-height: 1.55;
+        font-size: 0.88rem;
+        line-height: 1.45;
+    }
+
+    .drop-cap {
+        font-size: 1.75rem;
+        line-height: 0.85;
+        padding-right: 4px;
+    }
+
+    .quote-footer {
+        margin-top: 6px;
+        font-size: 0.76rem;
     }
 
     .mobile-bottom-dock {
@@ -2521,6 +2582,13 @@ body.js-loaded .reveal-item.revealed {
         padding: 6px 3px;
         bottom: calc(10px + env(safe-area-inset-bottom, 8px));
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 15px rgba(229, 185, 114, 0.2);
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    }
+
+    .mobile-bottom-dock.dock-hidden {
+        transform: translateY(140%);
+        opacity: 0;
+        pointer-events: none;
     }
 
     .dock-item {
@@ -2546,73 +2614,82 @@ body.js-loaded .reveal-item.revealed {
     }
 
     .cosmic-chronometer {
-        margin: 16px auto 18px auto;
+        margin: 10px auto 14px auto;
     }
 
     .chronometer-inner {
-        padding: 16px 10px 14px;
+        padding: 12px 10px 10px;
+    }
+
+    .chrono-header {
+        margin-bottom: 8px;
+        gap: 6px;
+    }
+
+    .chrono-kicker {
+        font-size: 0.56rem;
+        letter-spacing: 1.4px;
     }
 
     .chrono-counter-grid {
         gap: 5px;
+        margin-bottom: 8px;
     }
 
     .chrono-unit {
-        min-width: 50px;
-        padding: 6px 2px;
+        min-width: 0;
+        padding: 5px 2px;
+        border-radius: 6px;
     }
 
     .chrono-number {
-        font-size: 1.25rem;
-        letter-spacing: 0.5px;
+        font-size: 1.15rem;
+        letter-spacing: 0;
     }
 
     .chrono-label {
-        font-size: 0.48rem;
-        margin-top: 3px;
-    }
-
-    .chrono-separator {
-        font-size: 1.05rem;
+        font-size: 0.46rem;
+        margin-top: 2px;
+        letter-spacing: 0.8px;
     }
 
     .chrono-statement {
-        font-size: 0.88rem;
+        font-size: 0.82rem;
         line-height: 1.35;
-        padding: 0 4px;
+        padding: 0 2px;
     }
 
     .gemini-archetype-card {
-        padding: 22px 14px 20px;
-        margin-bottom: 26px;
+        padding: 20px 14px 18px;
+        margin-bottom: 22px;
     }
 
     .gemini-headline {
-        font-size: 1.25rem;
+        font-size: 1.22rem;
     }
 
     .gemini-lead-quote {
-        font-size: 0.95rem;
-        margin-bottom: 10px;
+        font-size: 0.92rem;
+        margin-bottom: 8px;
     }
 
     .gemini-summary-text {
-        font-size: 0.90rem;
-        line-height: 1.55;
+        font-size: 0.88rem;
+        line-height: 1.5;
     }
 
     .gemini-pill-tags .pill-item {
-        font-size: 0.62rem;
-        padding: 3px 10px;
+        font-size: 0.60rem;
+        padding: 3px 9px;
     }
 
     .tarot-actions {
-        margin-top: 18px;
+        margin-top: 16px;
     }
 
     .btn-tarot-shuffle {
         width: 100%;
-        max-width: 260px;
+        max-width: 250px;
         justify-content: center;
     }
 }
@@ -2794,18 +2871,17 @@ body.js-loaded .reveal-item.revealed {
 }
 
 .chrono-counter-grid {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-    margin-bottom: 14px;
+    max-width: 480px;
+    margin: 0 auto 14px auto;
 }
 
 .chrono-unit {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 62px;
     background: rgba(0, 0, 0, 0.45);
     border: 1px solid rgba(229, 185, 114, 0.2);
     border-radius: 8px;
@@ -2818,7 +2894,7 @@ body.js-loaded .reveal-item.revealed {
     font-size: 1.55rem;
     font-weight: 700;
     color: var(--gold-light);
-    letter-spacing: 1.5px;
+    letter-spacing: 0.5px;
     line-height: 1;
     text-shadow: 0 0 10px rgba(229, 185, 114, 0.5);
 }
@@ -2831,19 +2907,6 @@ body.js-loaded .reveal-item.revealed {
     opacity: 0.8;
     margin-top: 5px;
     font-weight: 600;
-}
-
-.chrono-separator {
-    font-family: var(--font-heading);
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: rgba(229, 185, 114, 0.5);
-    animation: blinkSlow 1s infinite alternate;
-}
-
-@keyframes blinkSlow {
-    from { opacity: 0.3; }
-    to { opacity: 1; }
 }
 
 .chrono-statement {
