@@ -392,12 +392,12 @@ body.js-loaded .reveal-item.revealed {
     filter: blur(55px);
 }
 
-/* Emblema Astrolábio Editorial de Alta Joalheria */
-.astrolabe-emblem {
+/* Símbolo Solar Celeste com Monograma & Data */
+.sun-symbol-emblem {
     position: relative;
-    width: 110px;
-    height: 110px;
-    margin: 0 auto 22px auto;
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 16px auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -406,130 +406,130 @@ body.js-loaded .reveal-item.revealed {
     z-index: 5;
 }
 
-.astrolabe-emblem:hover {
-    transform: scale(1.05);
+.sun-symbol-emblem:hover {
+    transform: scale(1.06);
 }
 
-.astrolabe-ring {
+.sun-corona-glow {
     position: absolute;
-    inset: 0;
-    margin: auto;
+    inset: -12px;
     border-radius: 50%;
+    background: radial-gradient(circle, rgba(229, 185, 114, 0.28) 0%, rgba(230, 57, 70, 0.12) 45%, transparent 70%);
+    filter: blur(8px);
+    animation: sunPulse 3s infinite alternate ease-in-out;
     pointer-events: none;
-    box-sizing: border-box;
 }
 
-.ring-outer {
-    width: 108px;
-    height: 108px;
-    border: 1px dashed rgba(229, 185, 114, 0.48);
-    box-shadow: 0 0 16px rgba(229, 185, 114, 0.15);
-    animation: spinSlow 36s linear infinite;
+@keyframes sunPulse {
+    0% { transform: scale(0.92); opacity: 0.75; }
+    100% { transform: scale(1.12); opacity: 1; }
 }
 
-.ring-orbit {
-    width: 94px;
-    height: 94px;
-    border: 1px solid rgba(229, 185, 114, 0.22);
-    animation: spinSlow 24s linear infinite reverse;
-}
-
-.orbit-pip {
+.sun-ray-ring {
     position: absolute;
-    font-size: 0.42rem;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1px dashed rgba(229, 185, 114, 0.45);
+    box-shadow: 0 0 14px rgba(229, 185, 114, 0.2);
+    animation: spinSlow 32s linear infinite;
+    pointer-events: none;
+}
+
+.sun-orbit-ring {
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+    border: 1px solid rgba(229, 185, 114, 0.25);
+    animation: spinSlow 20s linear infinite reverse;
+    pointer-events: none;
+}
+
+.sun-pip {
+    position: absolute;
+    font-size: 0.44rem;
     color: var(--gold-accent);
-    opacity: 0.75;
+    opacity: 0.85;
     line-height: 1;
 }
 
-.pip-n {
-    top: -4px;
+.pip-top {
+    top: -5px;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.pip-s {
-    bottom: -4px;
+.pip-right {
+    right: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.pip-bottom {
+    bottom: -5px;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.astrolabe-core {
+.pip-left {
+    left: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.sun-medallion-core {
     position: relative;
     z-index: 6;
-    width: 82px;
-    height: 82px;
+    width: 76px;
+    height: 76px;
     border-radius: 50%;
-    background: radial-gradient(circle at 50% 32%, #260914 0%, #100307 100%);
-    border: 1.5px solid rgba(229, 185, 114, 0.6);
-    box-shadow: 0 0 18px rgba(229, 185, 114, 0.22), inset 0 0 12px rgba(0, 0, 0, 0.88);
+    background: radial-gradient(circle at 45% 32%, #380d1d 0%, #16040a 65%, #080104 100%);
+    border: 1.5px solid rgba(229, 185, 114, 0.75);
+    box-shadow: 0 0 20px rgba(229, 185, 114, 0.25), inset 0 0 12px rgba(0, 0, 0, 0.9);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     box-sizing: border-box;
-    padding: 2px 4px;
+    padding: 2px;
 }
 
-.monogram-sparkle {
-    font-size: 0.50rem;
+.sun-mini-glyph {
+    font-size: 0.70rem;
     color: var(--gold-accent);
-    opacity: 0.9;
+    filter: drop-shadow(0 0 4px rgba(229, 185, 114, 0.7));
     line-height: 1;
-    margin-bottom: 1px;
+    margin-bottom: 2px;
+    animation: pulse 2.5s infinite ease-in-out;
 }
 
-.monogram-initials {
+.sun-monogram {
     font-family: var(--font-heading);
-    font-size: 1.34rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    letter-spacing: 2.5px;
-    margin-left: 2.5px;
+    letter-spacing: 2px;
+    margin-left: 2px;
     color: var(--gold-light);
-    text-shadow: 0 0 10px rgba(229, 185, 114, 0.65);
+    text-shadow: 0 0 10px rgba(229, 185, 114, 0.7);
     line-height: 1;
     display: block;
 }
 
-.monogram-year {
+.sun-date {
     font-family: var(--font-sans);
-    font-size: 0.52rem;
-    letter-spacing: 1.4px;
+    font-size: 0.50rem;
+    letter-spacing: 1.2px;
     color: var(--gold-accent);
     margin-top: 3px;
     font-weight: 600;
     line-height: 1;
     display: block;
-    opacity: 0.9;
+    opacity: 0.95;
 }
 
 @keyframes spinSlow {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
-}
-
-.editorial-badge-wrapper {
-    margin-bottom: 18px;
-}
-
-.editorial-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 6px 18px;
-    background: rgba(230, 57, 70, 0.1);
-    border: 1px solid rgba(229, 185, 114, 0.35);
-    border-radius: 4px;
-    font-family: var(--font-sans);
-    font-size: 0.72rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold-accent);
-}
-
-.editorial-divider {
-    color: rgba(230, 57, 70, 0.5);
 }
 
 .hero-content {
@@ -1631,17 +1631,17 @@ body.js-loaded .reveal-item.revealed {
 }
 
 .tarot-card-3d {
-    width: 320px;
-    min-height: 520px;
+    width: 295px;
+    min-height: 480px;
     perspective: 1200px;
     cursor: pointer;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     position: relative;
 }
 
 .tarot-card-inner {
     width: 100%;
-    min-height: 520px;
+    min-height: 480px;
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
@@ -1654,7 +1654,7 @@ body.js-loaded .reveal-item.revealed {
 
 .tarot-card-face {
     width: 100%;
-    min-height: 520px;
+    min-height: 480px;
     height: 100%;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -2254,75 +2254,28 @@ body.js-loaded .reveal-item.revealed {
         filter: blur(35px);
     }
 
-    .astrolabe-emblem {
-        width: 84px;
-        height: 84px;
-        margin-bottom: 16px;
-    }
-
-    .ring-outer {
-        width: 82px;
-        height: 82px;
-    }
-
-    .ring-inner {
-        width: 66px;
-        height: 66px;
-    }
-
-    .monogram-initials {
-        font-size: 1.12rem;
-    }
-
-    .monogram-year {
-        font-size: 0.56rem;
-    }
-
-    .btn-tarot-shuffle {
-        padding: 13px 26px;
-        font-size: 0.78rem;
-        letter-spacing: 2px;
-        gap: 9px;
-    }
-
-    /* Emblema Astrolábio Editorial calibrado para Mobile / Galaxy A15 */
-    .astrolabe-emblem {
-        width: 100px;
-        height: 100px;
-        margin: 0 auto 18px auto;
-    }
-
-    .ring-outer {
-        width: 98px;
-        height: 98px;
-    }
-
-    .ring-orbit {
+    .sun-symbol-emblem {
         width: 86px;
         height: 86px;
+        margin: 0 auto 14px auto;
     }
 
-    .astrolabe-core {
-        width: 76px;
-        height: 76px;
-        padding: 2px 4px;
+    .sun-medallion-core {
+        width: 70px;
+        height: 70px;
     }
 
-    .monogram-sparkle {
-        font-size: 0.44rem;
-        margin-bottom: 1px;
+    .sun-mini-glyph {
+        font-size: 0.64rem;
     }
 
-    .monogram-initials {
-        font-size: 1.25rem;
-        letter-spacing: 2.2px;
-        margin-left: 2.2px;
+    .sun-monogram {
+        font-size: 1.15rem;
+        letter-spacing: 1.8px;
     }
 
-    .monogram-year {
-        font-size: 0.50rem;
-        letter-spacing: 1.2px;
-        margin-top: 3px;
+    .sun-date {
+        font-size: 0.46rem;
     }
 
     .btn-tarot-shuffle {
@@ -2439,12 +2392,12 @@ body.js-loaded .reveal-item.revealed {
     }
 
     .tarot-card-3d {
-        width: min(300px, 86vw);
-        min-height: 485px;
+        width: min(275px, 82vw);
+        min-height: 445px;
     }
 
     .tarot-card-inner, .tarot-card-face {
-        min-height: 485px;
+        min-height: 445px;
     }
 
     .tarot-border-inner {
@@ -2496,40 +2449,28 @@ body.js-loaded .reveal-item.revealed {
         padding: 36px 12px calc(90px + env(safe-area-inset-bottom, 12px));
     }
 
-    .astrolabe-emblem {
-        width: 68px;
-        height: 68px;
-        margin-bottom: 8px;
+    .sun-symbol-emblem {
+        width: 78px;
+        height: 78px;
+        margin: 0 auto 10px auto;
     }
 
-    .ring-outer {
-        width: 66px;
-        height: 66px;
+    .sun-medallion-core {
+        width: 64px;
+        height: 64px;
     }
 
-    .ring-inner {
-        width: 52px;
-        height: 52px;
+    .sun-mini-glyph {
+        font-size: 0.58rem;
     }
 
-    .monogram-initials {
-        font-size: 0.95rem;
+    .sun-monogram {
+        font-size: 1.08rem;
+        letter-spacing: 1.5px;
     }
 
-    .astrolabe-date {
-        font-size: 0.44rem;
-        margin-top: 1px;
-    }
-
-    .editorial-badge-wrapper {
-        margin-bottom: 8px;
-    }
-
-    .editorial-badge {
-        font-size: 0.52rem;
-        letter-spacing: 0.8px;
-        padding: 3px 8px;
-        gap: 5px;
+    .sun-date {
+        font-size: 0.42rem;
     }
 
     .hero-title {
@@ -2601,16 +2542,16 @@ body.js-loaded .reveal-item.revealed {
     }
 
     .tarot-card-3d {
-        width: min(290px, 86vw);
-        min-height: 475px;
+        width: min(255px, 80vw);
+        min-height: 420px;
     }
 
     .tarot-card-inner, .tarot-card-face {
-        min-height: 475px;
+        min-height: 420px;
     }
 
     .photo-wrapper {
-        height: 260px;
+        height: 220px;
     }
 
     .cosmic-chronometer {
