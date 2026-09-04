@@ -1,0 +1,2531 @@
+/* ==========================================================================
+   A HORA DA NOSSA ESTRELA — DESIGN EDITORIAL, LITERÁRIO & CÓSMICO
+   Referência Editorial: Caliandras / Revistas Literárias de Luxo
+   Paleta: Carmesim Rubi, Dourado Champagne, Vinho Veludo & Preto Estelar
+   ========================================================================== */
+
+:root {
+    /* Cores Primárias & Tons Rubi */
+    --primary-red: #c1121f;
+    --bright-red: #e63946;
+    --dark-wine: #590d22;
+    --velvet-wine: #28050e;
+    --deep-bg: #070205;
+    --space-black: #030002;
+    --card-bg: rgba(22, 5, 11, 0.75);
+    --card-border: rgba(230, 57, 70, 0.22);
+    
+    /* Cores de Acento Editorial & Ouro */
+    --gold-accent: #e5b972;
+    --gold-light: #fdf2d9;
+    --gold-dim: #b88d44;
+    --gold-glow: rgba(229, 185, 114, 0.35);
+    --ruby-glow: rgba(230, 57, 70, 0.45);
+    
+    /* Textos & Legibilidade */
+    --text-pure: #ffffff;
+    --text-primary: #f6e8ea;
+    --text-muted: #c4a4ab;
+    --text-dark: #20060d;
+    --paper-bg: #fcf6ee;
+    --paper-parchment: #fcf3df;
+    
+    /* Tipografia */
+    --font-heading: 'Cinzel', serif;
+    --font-literary: 'Cormorant Garamond', serif;
+    --font-editorial: 'Newsreader', serif;
+    --font-sans: 'Outfit', sans-serif;
+    --font-handwritten: 'Great Vibes', cursive;
+    
+    /* Transições e Sombras */
+    --transition-smooth: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    --shadow-cosmic: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(230, 57, 70, 0.15);
+    --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.6);
+    --shadow-glow: 0 0 25px rgba(230, 57, 70, 0.4);
+}
+
+/* Reset Global & Otimização de Toque */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    background-color: var(--deep-bg);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    background-color: var(--deep-bg);
+    line-height: 1.65;
+    position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+button, a {
+    touch-action: manipulation;
+}
+
+/* ==========================================================================
+   BARRA DE PROGRESSO DE LEITURA EDITORIAL
+   ========================================================================== */
+.reading-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--bright-red), var(--gold-accent));
+    transform-origin: 0%;
+    transform: scaleX(0);
+    z-index: 10001;
+    transition: transform 0.1s linear;
+    box-shadow: 0 0 8px var(--ruby-glow);
+}
+
+/* Canvas Cósmico Fixo de Fundo */
+#universe-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Seleção de Texto Estilizada */
+::selection {
+    background: var(--bright-red);
+    color: var(--text-pure);
+}
+
+/* Scrollbar Personalizada */
+::-webkit-scrollbar {
+    width: 7px;
+}
+::-webkit-scrollbar-track {
+    background: var(--space-black);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--dark-wine);
+    border-radius: 4px;
+    border: 1px solid var(--card-border);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-red);
+}
+
+/* ==========================================================================
+   ANIMAÇÃO DE REVEAL NO SCROLL (INTERSECTION OBSERVER)
+   ========================================================================== */
+.hero-section .reveal-item {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+body.js-loaded .reveal-item {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+body.js-loaded .reveal-item.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   BARRA DE NAVEGAÇÃO EDITORIAL HAUTE-COUTURE & ATEMPORAL
+   ========================================================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(9, 2, 6, 0.75);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    border-bottom: 1px solid rgba(229, 185, 114, 0.2);
+    transition: var(--transition-smooth);
+    padding-top: env(safe-area-inset-top, 0px);
+}
+
+.navbar-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.nav-symbol {
+    font-size: 0.95rem;
+    color: var(--gold-accent);
+    animation: pulse 2.4s infinite ease-in-out;
+    filter: drop-shadow(0 0 6px rgba(229, 185, 114, 0.7));
+}
+
+.brand-title {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.88rem;
+    letter-spacing: 2.8px;
+    color: var(--gold-light);
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 26px;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.84rem;
+    font-weight: 500;
+    transition: var(--transition-smooth);
+    letter-spacing: 0.8px;
+    position: relative;
+    padding: 4px 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: linear-gradient(90deg, var(--bright-red), var(--gold-accent));
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--text-pure);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Widget de Áudio Moderno & Minimalista */
+.nav-audio-widget {
+    background: rgba(230, 57, 70, 0.12);
+    border: 1px solid rgba(229, 185, 114, 0.35);
+    color: var(--gold-light);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.76rem;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition-smooth);
+}
+
+.nav-audio-widget:hover {
+    background: rgba(230, 57, 70, 0.28);
+    border-color: var(--gold-accent);
+    box-shadow: 0 0 15px rgba(229, 185, 114, 0.3);
+    transform: scale(1.02);
+}
+
+.nav-audio-widget.is-playing {
+    background: linear-gradient(135deg, rgba(193, 18, 31, 0.85), rgba(89, 13, 34, 0.95));
+    border-color: var(--gold-accent);
+    box-shadow: 0 0 16px rgba(230, 57, 70, 0.5), 0 0 10px rgba(229, 185, 114, 0.3);
+}
+
+.sound-wave-bars {
+    display: flex;
+    align-items: center;
+    gap: 2.5px;
+    height: 12px;
+}
+
+.sound-wave-bars .bar {
+    width: 2px;
+    height: 4px;
+    background: var(--gold-accent);
+    border-radius: 1px;
+    transition: height 0.3s ease;
+}
+
+.nav-audio-widget.is-playing .sound-wave-bars .bar-1 {
+    animation: equalizeBar 0.8s infinite ease-in-out;
+}
+
+.nav-audio-widget.is-playing .sound-wave-bars .bar-2 {
+    animation: equalizeBar 0.8s infinite ease-in-out 0.2s;
+}
+
+.nav-audio-widget.is-playing .sound-wave-bars .bar-3 {
+    animation: equalizeBar 0.8s infinite ease-in-out 0.4s;
+}
+
+@keyframes equalizeBar {
+    0%, 100% { height: 3px; }
+    50% { height: 12px; }
+}
+
+/* ==========================================================================
+   SEÇÃO 1: HERO / FOLHA DE ROSTO EDITORIAL
+   ========================================================================== */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 20px 65px;
+    text-align: center;
+    z-index: 2;
+    overflow: hidden;
+}
+
+/* Retrato Editorial de Fundo na Abertura (Hero) */
+.hero-portrait-container {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.hero-portrait-image {
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    background-position: center 20%;
+    background-repeat: no-repeat;
+    opacity: 0.22;
+    filter: contrast(1.15) brightness(0.88) saturate(1.1);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 32%, rgba(0, 0, 0, 0.95) 15%, rgba(0, 0, 0, 0.45) 50%, transparent 78%);
+    mask-image: radial-gradient(ellipse at 50% 32%, rgba(0, 0, 0, 0.95) 15%, rgba(0, 0, 0, 0.45) 50%, transparent 78%);
+    animation: heroPortraitDrift 22s ease-in-out infinite alternate;
+}
+
+.hero-portrait-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 35%, transparent 20%, rgba(8, 2, 5, 0.5) 60%, #080205 95%);
+}
+
+.hero-portrait-aurora {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle, rgba(230, 57, 70, 0.22) 0%, rgba(229, 185, 114, 0.08) 45%, transparent 72%);
+    filter: blur(45px);
+    animation: auroraPulse 10s ease-in-out infinite alternate;
+}
+
+@keyframes heroPortraitDrift {
+    0% {
+        transform: scale(1) translateY(0);
+    }
+    50% {
+        transform: scale(1.05) translateY(-8px);
+    }
+    100% {
+        transform: scale(1.02) translateY(5px);
+    }
+}
+
+@keyframes auroraPulse {
+    0% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.15);
+    }
+}
+
+.hero-glow {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 650px;
+    height: 650px;
+    background: radial-gradient(circle, rgba(193, 18, 31, 0.24) 0%, rgba(89, 13, 34, 0.08) 50%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+    filter: blur(55px);
+}
+
+/* Emblema Astrolábio Editorial de Alta Joalheria */
+.astrolabe-emblem {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 22px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 5;
+}
+
+.astrolabe-emblem:hover {
+    transform: scale(1.05);
+}
+
+.astrolabe-ring {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    border-radius: 50%;
+    pointer-events: none;
+    box-sizing: border-box;
+}
+
+.ring-outer {
+    width: 108px;
+    height: 108px;
+    border: 1px dashed rgba(229, 185, 114, 0.48);
+    box-shadow: 0 0 16px rgba(229, 185, 114, 0.15);
+    animation: spinSlow 36s linear infinite;
+}
+
+.ring-orbit {
+    width: 94px;
+    height: 94px;
+    border: 1px solid rgba(229, 185, 114, 0.22);
+    animation: spinSlow 24s linear infinite reverse;
+}
+
+.orbit-pip {
+    position: absolute;
+    font-size: 0.42rem;
+    color: var(--gold-accent);
+    opacity: 0.75;
+    line-height: 1;
+}
+
+.pip-n {
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.pip-s {
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.astrolabe-core {
+    position: relative;
+    z-index: 6;
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 32%, #260914 0%, #100307 100%);
+    border: 1.5px solid rgba(229, 185, 114, 0.6);
+    box-shadow: 0 0 18px rgba(229, 185, 114, 0.22), inset 0 0 12px rgba(0, 0, 0, 0.88);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 2px 4px;
+}
+
+.monogram-sparkle {
+    font-size: 0.50rem;
+    color: var(--gold-accent);
+    opacity: 0.9;
+    line-height: 1;
+    margin-bottom: 1px;
+}
+
+.monogram-initials {
+    font-family: var(--font-heading);
+    font-size: 1.34rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    margin-left: 2.5px;
+    color: var(--gold-light);
+    text-shadow: 0 0 10px rgba(229, 185, 114, 0.65);
+    line-height: 1;
+    display: block;
+}
+
+.monogram-year {
+    font-family: var(--font-sans);
+    font-size: 0.52rem;
+    letter-spacing: 1.4px;
+    color: var(--gold-accent);
+    margin-top: 3px;
+    font-weight: 600;
+    line-height: 1;
+    display: block;
+    opacity: 0.9;
+}
+
+@keyframes spinSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.editorial-badge-wrapper {
+    margin-bottom: 18px;
+}
+
+.editorial-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 18px;
+    background: rgba(230, 57, 70, 0.1);
+    border: 1px solid rgba(229, 185, 114, 0.35);
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-accent);
+}
+
+.editorial-divider {
+    color: rgba(230, 57, 70, 0.5);
+}
+
+.hero-content {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.4rem, 6vw, 4.4rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--text-pure);
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+}
+
+/* Efeito Shimmer Folha de Ouro & Haute-Couture */
+@keyframes goldShimmer {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.gold-shimmer-text {
+    background: linear-gradient(115deg, #c59b3f 0%, #fff6d9 25%, #e5b972 50%, #ffffff 60%, #e5b972 75%, #c59b3f 100%);
+    background-size: 260% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: goldShimmer 6s ease-in-out infinite;
+    display: inline-block;
+}
+
+.highlight-editorial {
+    background: linear-gradient(120deg, #ff4d6d 0%, #e63946 25%, #fff2d1 50%, #e5b972 75%, #ff4d6d 100%);
+    background-size: 260% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: goldShimmer 7s ease infinite;
+    filter: drop-shadow(0 0 25px rgba(230, 57, 70, 0.45));
+}
+
+.hero-subtitle {
+    font-size: 1.18rem;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+    font-weight: 300;
+    font-family: var(--font-editorial);
+    font-style: italic;
+    max-width: 680px;
+}
+
+.dedication-name {
+    color: var(--gold-light);
+    font-family: var(--font-literary);
+    font-size: 1.45rem;
+    font-style: normal;
+    font-weight: 600;
+    border-bottom: 1px dashed var(--gold-accent);
+    padding-bottom: 2px;
+}
+
+/* Bloco da Citação de Clarice Lispector */
+.clarice-quote-box {
+    position: relative;
+    background: rgba(24, 6, 12, 0.82);
+    border: 1px solid rgba(230, 57, 70, 0.3);
+    border-left: 3px solid var(--primary-red);
+    padding: 30px 36px 26px;
+    border-radius: 8px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    margin-bottom: 28px;
+    box-shadow: var(--shadow-cosmic);
+    max-width: 760px;
+    text-align: left;
+}
+
+.quote-header-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    color: var(--gold-accent);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.philosophical-marginalia {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px dashed rgba(229, 185, 114, 0.25);
+    font-family: var(--font-editorial);
+    font-size: 0.96rem;
+    font-style: italic;
+    color: var(--gold-dim);
+    line-height: 1.45;
+}
+
+.philosophical-marginalia i {
+    color: var(--bright-red);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+.clarice-quote {
+    font-family: var(--font-editorial);
+    font-size: 1.32rem;
+    line-height: 1.65;
+    color: var(--text-primary);
+    margin-bottom: 18px;
+}
+
+/* Capitular (Drop Cap) Editorial */
+.drop-cap {
+    float: left;
+    font-family: var(--font-heading);
+    font-size: 3.4rem;
+    line-height: 0.8;
+    padding-top: 4px;
+    padding-right: 12px;
+    padding-bottom: 2px;
+    color: var(--gold-accent);
+    text-shadow: 0 0 15px rgba(229, 185, 114, 0.4);
+}
+
+.quote-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px dashed rgba(230, 57, 70, 0.25);
+    padding-top: 12px;
+    font-size: 0.9rem;
+}
+
+.quote-book {
+    color: var(--text-muted);
+    font-family: var(--font-editorial);
+    font-style: italic;
+}
+
+.quote-author {
+    color: var(--gold-accent);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.hero-subtle-divider {
+    margin-top: 14px;
+    color: var(--gold-accent);
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    opacity: 0.6;
+}
+
+/* ==========================================================================
+   ESTRUTURA EDITORIAL DAS SEÇÕES & MARCAÇÕES DE CAPÍTULO
+   ========================================================================== */
+.section-container {
+    position: relative;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 110px 24px;
+    z-index: 2;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 780px;
+    margin: 0 auto 55px;
+}
+
+.chapter-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.chapter-num {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--bright-red);
+}
+
+.chapter-rule {
+    width: 30px;
+    height: 1px;
+    background: var(--gold-accent);
+}
+
+.chapter-theme {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold-accent);
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4.2vw, 3rem);
+    color: var(--text-pure);
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.section-description {
+    color: var(--text-muted);
+    font-family: var(--font-editorial);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+/* ==========================================================================
+   SEÇÃO 2: CAPÍTULO I • CARDS EDITORIAIS
+   ========================================================================== */
+.editorial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+    margin-bottom: 45px;
+}
+
+.editorial-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 34px 28px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: var(--transition-smooth);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.featured-card {
+    border-color: rgba(229, 185, 114, 0.4);
+    background: rgba(30, 7, 15, 0.85);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(229, 185, 114, 0.15);
+}
+
+.editorial-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(230, 57, 70, 0.6);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 25px rgba(230, 57, 70, 0.2);
+}
+
+/* Ornatos Clássicos & Cantos de Livro Raro */
+.ornate-corners {
+    position: relative;
+}
+
+.corner-flourish {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    font-size: 0.92rem;
+    color: var(--gold-accent);
+    opacity: 0.6;
+    pointer-events: none;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.4s ease, transform 0.4s ease, color 0.4s ease, filter 0.4s ease;
+    z-index: 4;
+}
+
+.editorial-card:hover .corner-flourish,
+.folio-card:hover .corner-flourish {
+    opacity: 1;
+    color: var(--gold-light);
+    filter: drop-shadow(0 0 6px rgba(229, 185, 114, 0.85));
+    transform: scale(1.15);
+}
+
+.corner-tl { top: 8px; left: 8px; }
+.corner-tr { top: 8px; right: 8px; }
+.corner-bl { bottom: 8px; left: 8px; }
+.corner-br { bottom: 8px; right: 8px; }
+
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    font-size: 0.72rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.meta-index {
+    color: var(--bright-red);
+    font-weight: 700;
+    font-family: var(--font-heading);
+}
+
+.meta-tag {
+    color: var(--gold-accent);
+    background: rgba(229, 185, 114, 0.1);
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(229, 185, 114, 0.25);
+}
+
+.card-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(230, 57, 70, 0.14);
+    border: 1px solid rgba(230, 57, 70, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    color: var(--bright-red);
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    color: var(--gold-light);
+    margin-bottom: 14px;
+}
+
+.card-text {
+    font-family: var(--font-editorial);
+    font-size: 1.15rem;
+    color: var(--text-primary);
+    line-height: 1.65;
+    margin-bottom: 24px;
+    flex-grow: 1;
+}
+
+.card-lead {
+    font-weight: 600;
+    color: var(--gold-accent);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.card-footer-stamp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+    border-top: 1px dashed rgba(230, 57, 70, 0.2);
+    font-size: 0.72rem;
+    color: var(--gold-dim);
+    letter-spacing: 1.5px;
+}
+
+/* Pullquote de Revista */
+.editorial-pullquote {
+    position: relative;
+    background: linear-gradient(135deg, rgba(89, 13, 34, 0.4), rgba(26, 6, 12, 0.7));
+    border: 1px solid rgba(229, 185, 114, 0.35);
+    border-radius: 8px;
+    padding: 36px 30px;
+    text-align: center;
+    box-shadow: var(--shadow-cosmic);
+}
+
+.pullquote-decor {
+    font-family: var(--font-literary);
+    font-size: 2.8rem;
+    line-height: 1;
+    color: var(--gold-accent);
+    margin-bottom: -10px;
+}
+
+.editorial-pullquote p {
+    font-family: var(--font-editorial);
+    font-size: 1.45rem;
+    font-style: italic;
+    color: var(--gold-light);
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.pullquote-sub {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   SEÇÃO 3: CAPÍTULO II • PSICOLOGIA EDITORIAL
+   ========================================================================== */
+.psycho-editorial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.psycho-item {
+    background: rgba(22, 5, 11, 0.75);
+    border: 1px solid rgba(230, 57, 70, 0.2);
+    border-radius: 10px;
+    padding: 26px 22px;
+    display: flex;
+    gap: 16px;
+    backdrop-filter: blur(10px);
+    transition: var(--transition-smooth);
+}
+
+.psycho-item:hover {
+    background: rgba(35, 8, 16, 0.9);
+    border-color: var(--bright-red);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7);
+}
+
+.psycho-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    min-width: 48px;
+}
+
+.psycho-section-num {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--bright-red);
+    white-space: nowrap;
+    text-align: center;
+    line-height: 1;
+}
+
+.psycho-line {
+    width: 1px;
+    flex-grow: 1;
+    background: linear-gradient(180deg, var(--bright-red), transparent);
+}
+
+.psycho-body {
+    flex-grow: 1;
+}
+
+.psycho-kicker {
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    color: var(--gold-accent);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.psycho-body h3 {
+    font-family: var(--font-heading);
+    font-size: 1.12rem;
+    color: var(--text-pure);
+    margin-bottom: 10px;
+}
+
+.psycho-body p {
+    font-family: var(--font-editorial);
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+
+.psycho-tag-pill {
+    display: inline-block;
+    font-size: 0.72rem;
+    color: var(--gold-light);
+    background: rgba(230, 57, 70, 0.15);
+    border: 1px solid rgba(230, 57, 70, 0.3);
+    padding: 3px 10px;
+    border-radius: 12px;
+}
+
+/* ==========================================================================
+   SEÇÃO 4: CAPÍTULO III • BIBLIOTECA DE CARTAS SELADAS
+   ========================================================================== */
+.envelopes-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+}
+
+.letter-card {
+    background: rgba(24, 6, 12, 0.85);
+    border: 1px solid rgba(230, 57, 70, 0.3);
+    border-radius: 14px;
+    padding: 36px 26px 28px;
+    position: relative;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: var(--shadow-cosmic);
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* ==========================================================================
+   SEÇÃO 4: CAPÍTULO III • CADERNO DE FRAGMENTOS & CRÔNICAS
+   ========================================================================== */
+.chronicles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.folio-card {
+    background: rgba(22, 5, 11, 0.82);
+    border: 1px solid rgba(230, 57, 70, 0.28);
+    border-radius: 12px;
+    padding: 34px 28px 26px;
+    position: relative;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: var(--shadow-cosmic);
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+}
+
+.featured-folio {
+    border-color: rgba(229, 185, 114, 0.5);
+    background: rgba(32, 7, 16, 0.88);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.85), 0 0 25px rgba(229, 185, 114, 0.18);
+}
+
+.folio-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(230, 57, 70, 0.6);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.9), 0 0 25px rgba(230, 57, 70, 0.25);
+}
+
+.bookmark-ribbon {
+    position: absolute;
+    top: -12px;
+    right: 24px;
+    width: 22px;
+    height: 38px;
+    background: linear-gradient(180deg, var(--gold-accent), #9a7226);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 75%, 0 100%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.folio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed rgba(230, 57, 70, 0.25);
+}
+
+.folio-tag {
+    font-size: 0.7rem;
+    color: var(--gold-accent);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.folio-ref {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.folio-quote-block {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 20px;
+    background: rgba(10, 2, 5, 0.35);
+    padding: 14px 16px;
+    border-radius: 6px;
+    border-left: 2px solid var(--gold-accent);
+}
+
+.folio-quote {
+    font-family: var(--font-editorial);
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--gold-light);
+    line-height: 1.5;
+}
+
+.folio-content {
+    flex-grow: 1;
+    margin-bottom: 24px;
+}
+
+.folio-content p {
+    font-family: var(--font-editorial);
+    font-size: 1.12rem;
+    line-height: 1.68;
+    color: var(--text-primary);
+}
+
+.folio-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+    border-top: 1px dashed rgba(230, 57, 70, 0.2);
+    font-size: 0.78rem;
+    color: var(--gold-dim);
+    letter-spacing: 1px;
+}
+
+.handwritten-footer {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+}
+
+.handwritten-footer strong {
+    font-family: var(--font-handwritten);
+    font-size: 1.7rem;
+    color: var(--bright-red);
+    font-weight: normal;
+}
+
+/* ==========================================================================
+   CARTA MANUSCRITA EM PERGAMINHO VINTAGE (FOLHETO 03 PARA ALE)
+   ========================================================================== */
+.parchment-letter-card {
+    background: radial-gradient(circle at 50% 15%, #fdf9f0 0%, #f7eed7 55%, #eee1be 100%) !important;
+    border: 1px solid rgba(197, 155, 63, 0.75) !important;
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.95), 0 0 35px rgba(229, 185, 114, 0.22), inset 0 0 50px rgba(184, 134, 11, 0.14) !important;
+    color: #2b170e !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.parchment-letter-card::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border: 1px dashed rgba(160, 115, 35, 0.38);
+    border-radius: 8px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.parchment-tag {
+    color: #8c2d19 !important;
+    background: rgba(140, 45, 25, 0.1) !important;
+    border-color: rgba(140, 45, 25, 0.28) !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.5px;
+}
+
+.parchment-ref {
+    color: #6a4f3b !important;
+    font-weight: 600 !important;
+}
+
+.parchment-quote-block {
+    background: rgba(238, 225, 190, 0.65) !important;
+    border-left: 3px solid #a83232 !important;
+    box-shadow: inset 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.parchment-quote {
+    color: #3d1b10 !important;
+    font-style: italic !important;
+    font-family: var(--font-editorial) !important;
+    font-size: 1.16rem !important;
+}
+
+.parchment-body-text {
+    color: #28140e !important;
+    font-family: var(--font-editorial) !important;
+    font-size: 1.15rem !important;
+    line-height: 1.74 !important;
+}
+
+.parchment-drop-cap {
+    color: #a83232 !important;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8) !important;
+    font-family: var(--font-heading) !important;
+}
+
+.parchment-highlight-name {
+    color: #8c1d18 !important;
+    font-family: var(--font-literary);
+    font-size: 1.32rem;
+    font-weight: 700;
+    border-bottom: 1.5px solid #a83232;
+    padding-bottom: 1px;
+}
+
+.parchment-footer {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    border-top: 1px dashed rgba(160, 115, 35, 0.4) !important;
+    padding-top: 16px !important;
+    margin-top: 10px;
+}
+
+.wax-seal-mini {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #b91c1c, #7f1d1d, #450a0a);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45), inset 0 2px 3px rgba(255, 255, 255, 0.4), inset 0 -2px 6px rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid rgba(255, 215, 0, 0.5);
+    flex-shrink: 0;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.wax-seal-mini:hover {
+    transform: scale(1.12) rotate(6deg);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.55), 0 0 15px rgba(229, 185, 114, 0.4);
+}
+
+.seal-inner {
+    font-family: var(--font-heading);
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #fef08a;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.handwritten-signature-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.handwritten-signature-block .dedication-note {
+    font-family: var(--font-editorial);
+    font-style: italic;
+    font-size: 0.92rem;
+    color: #5c3d2e;
+}
+
+.handwritten-sign {
+    font-family: var(--font-handwritten) !important;
+    font-size: 2.1rem !important;
+    color: #8c1d18 !important;
+    font-weight: normal !important;
+    line-height: 1.1;
+    margin-top: 2px;
+}
+
+/* ==========================================================================
+   SEÇÃO 5: CAPÍTULO IV • TRATADO DA SINTONIA PSÍQUICA (FREUD, LACAN, JUNG)
+   ========================================================================== */
+.psycho-editorial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+    margin-bottom: 30px;
+}
+
+.psycho-item {
+    background: rgba(24, 6, 12, 0.82);
+    border: 1px solid rgba(230, 57, 70, 0.28);
+    border-radius: 12px;
+    padding: 28px 24px;
+    display: flex;
+    gap: 20px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: var(--shadow-cosmic);
+    transition: var(--transition-smooth);
+}
+
+.psycho-item:hover {
+    transform: translateY(-5px);
+    border-color: rgba(229, 185, 114, 0.55);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.9), 0 0 20px rgba(229, 185, 114, 0.15);
+}
+
+.psycho-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    min-width: 50px;
+    width: auto;
+}
+
+.psycho-section-num {
+    font-family: var(--font-heading);
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: var(--gold-accent);
+    letter-spacing: 1px;
+    white-space: nowrap;
+    text-align: center;
+    line-height: 1;
+}
+
+.psycho-line {
+    flex-grow: 1;
+    width: 1px;
+    background: linear-gradient(180deg, var(--gold-accent), rgba(230, 57, 70, 0.2) 80%, transparent);
+    margin-top: 10px;
+}
+
+.psycho-body {
+    flex-grow: 1;
+}
+
+.psycho-kicker {
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--bright-red);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.psycho-body h3 {
+    font-family: var(--font-heading);
+    font-size: 1.28rem;
+    color: var(--gold-light);
+    margin-bottom: 12px;
+    line-height: 1.25;
+}
+
+.psycho-body p {
+    font-family: var(--font-editorial);
+    font-size: 1.08rem;
+    line-height: 1.62;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+}
+
+.psycho-tag-pill {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--gold-light);
+    background: rgba(229, 185, 114, 0.12);
+    border: 1px solid rgba(229, 185, 114, 0.3);
+    padding: 3px 10px;
+    border-radius: 12px;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   SEÇÃO 6: CAPÍTULO V • GALERIA EDITORIAL 35mm & POLAROIDS
+   ========================================================================== */
+.polaroid-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 32px;
+}
+
+.polaroid-item {
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, opacity 0.4s ease;
+}
+
+.polaroid-item:active .polaroid-inner {
+    transform: scale(0.97) translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.85);
+}
+
+.polaroid-inner {
+    background: #ffffff;
+    padding: 12px 12px 18px;
+    border-radius: 4px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.photo-tape {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 18px;
+    background: rgba(229, 185, 114, 0.4);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(229, 185, 114, 0.5);
+    z-index: 5;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.polaroid-item:hover .polaroid-inner {
+    transform: translateY(-8px) scale(1.03) rotate(1deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(230, 57, 70, 0.25);
+}
+
+.polaroid-item:nth-child(even):hover .polaroid-inner {
+    transform: translateY(-8px) scale(1.03) rotate(-1.5deg);
+}
+
+.film-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #888888;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+}
+
+.photo-wrapper {
+    width: 100%;
+    height: 270px;
+    overflow: hidden;
+    background: #110307;
+    border-radius: 2px;
+}
+
+.photo-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.polaroid-item:hover .photo-wrapper img {
+    transform: scale(1.05);
+}
+
+.polaroid-caption {
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #1a050b;
+    font-family: var(--font-editorial);
+}
+
+.polaroid-caption span {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.polaroid-caption small {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    color: var(--primary-red);
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   BOTÃO PRIMÁRIO EDITORIAL (RUBI & OURO)
+   ========================================================================== */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 13px 30px;
+    background: linear-gradient(135deg, var(--primary-red), #6a0715);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    font-family: var(--font-sans);
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(229, 185, 114, 0.4);
+    box-shadow: 0 6px 20px rgba(193, 18, 31, 0.45), 0 0 15px rgba(229, 185, 114, 0.15);
+    transition: var(--transition-smooth);
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 10px 30px rgba(230, 57, 70, 0.7), 0 0 20px var(--gold-glow);
+    border-color: var(--gold-accent);
+}
+
+.btn-primary:active {
+    transform: scale(0.97);
+}
+
+/* ==========================================================================
+   SEÇÃO 2: CAPÍTULO I • O TARÔ DAS ESTRELAS & ARCANOS
+   ========================================================================== */
+.tarot-experience {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 680px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Leque do Baralho de Tarô */
+.tarot-deck-container {
+    margin-bottom: 24px;
+    text-align: center;
+    width: 100%;
+}
+
+.tarot-instruction {
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    letter-spacing: 2px;
+    color: var(--gold-accent);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.tarot-fan {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 125px;
+    perspective: 800px;
+    padding: 10px 0;
+}
+
+.tarot-mini-card {
+    width: 58px;
+    height: 98px;
+    background: linear-gradient(145deg, #3d0718, #130105);
+    border: 1.5px solid var(--gold-accent);
+    border-radius: 7px;
+    margin: 0 -11px;
+    cursor: pointer;
+    transform: rotate(var(--rot)) translateX(var(--tx));
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.75);
+    position: relative;
+    overflow: hidden;
+}
+
+.tarot-back-pattern {
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    margin: 3px;
+    background: radial-gradient(circle, rgba(229, 185, 114, 0.25) 0%, transparent 65%);
+    border: 1px dashed rgba(229, 185, 114, 0.45);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mini-glyph {
+    font-size: 0.85rem;
+    color: var(--gold-accent);
+    opacity: 0.85;
+}
+
+.tarot-mini-card:hover, .tarot-mini-card.active-card {
+    transform: translateY(-22px) scale(1.18) rotate(0deg);
+    z-index: 25;
+    border-color: #ffd166;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.95), 0 0 22px var(--gold-glow);
+}
+
+/* Palco da Carta de Tarô 3D */
+.tarot-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.tarot-card-3d {
+    width: 320px;
+    min-height: 520px;
+    perspective: 1200px;
+    cursor: pointer;
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.tarot-card-inner {
+    width: 100%;
+    min-height: 520px;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.tarot-card-3d.flipped .tarot-card-inner {
+    transform: rotateY(180deg);
+}
+
+.tarot-card-face {
+    width: 100%;
+    min-height: 520px;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 14px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.92), 0 0 30px rgba(230, 57, 70, 0.3);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Efeito Holográfico Iridiscente & Acabamento Aveludado */
+.tarot-holo-sheen {
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    pointer-events: none;
+    z-index: 8;
+    background: linear-gradient(
+        calc(110deg + var(--holo-angle, 0deg)),
+        transparent 15%,
+        rgba(255, 215, 0, 0.14) 28%,
+        rgba(255, 105, 180, 0.16) 42%,
+        rgba(0, 245, 255, 0.15) 55%,
+        rgba(255, 220, 100, 0.16) 70%,
+        transparent 85%
+    );
+    background-size: 260% 260%;
+    background-position: var(--holo-x, 50%) var(--holo-y, 50%);
+    mix-blend-mode: color-dodge;
+    opacity: 0.65;
+    transition: opacity 0.4s ease;
+}
+
+.tarot-card-3d:hover .tarot-holo-sheen,
+.tarot-card-3d:active .tarot-holo-sheen {
+    opacity: 1;
+}
+
+/* Verso da Carta de Tarô (Veludo Rubro-Vinho & Ouro) */
+.tarot-card-back {
+    background: radial-gradient(circle at 50% 40%, #3e0717 0%, #1a0208 65%, #0d0104 100%);
+    padding: 12px;
+    border: 2px solid var(--gold-accent);
+}
+
+.tarot-border-outer {
+    width: 100%;
+    flex: 1;
+    border: 1.5px solid var(--gold-accent);
+    padding: 6px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tarot-border-inner {
+    width: 100%;
+    flex: 1;
+    border: 1px dashed rgba(229, 185, 114, 0.5);
+    border-radius: 6px;
+    padding: 20px 14px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    position: relative;
+    background: rgba(10, 1, 4, 0.45);
+}
+
+.tarot-sun-center {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: rgba(229, 185, 114, 0.15);
+    border: 1.5px solid var(--gold-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--gold-accent);
+    margin-bottom: 14px;
+    box-shadow: 0 0 25px var(--gold-glow);
+    animation: pulse 3s infinite ease-in-out;
+}
+
+.tarot-back-title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+}
+
+.tarot-mystic-symbols {
+    font-size: 1.1rem;
+    color: var(--bright-red);
+    letter-spacing: 6px;
+    margin-bottom: 16px;
+}
+
+.tarot-touch-hint {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+/* Frente da Carta de Tarô (O Arcano Revelado • Veludo & Ouro) */
+.tarot-card-front {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: radial-gradient(circle at 50% 35%, #4a091c 0%, #1c0209 65%, #0e0104 100%);
+    padding: 12px;
+    border: 2px solid var(--gold-accent);
+    transform: rotateY(180deg);
+}
+
+.tarot-card-front .tarot-border-outer {
+    border-color: var(--gold-accent);
+}
+
+.tarot-numeral {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--gold-accent);
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+}
+
+.tarot-illustration-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.tarot-glyph-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(230, 57, 70, 0.22);
+    border: 1px solid var(--bright-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.45rem;
+    color: var(--gold-light);
+    margin-bottom: 6px;
+    box-shadow: 0 0 20px var(--ruby-glow);
+}
+
+.tarot-arcane-name {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    letter-spacing: 2px;
+    line-height: 1.15;
+}
+
+.tarot-arcane-sub {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: var(--bright-red);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.tarot-reading-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.tarot-keywords {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 4px;
+}
+
+.tarot-keywords span {
+    font-size: 0.68rem;
+    color: var(--gold-light);
+    background: rgba(229, 185, 114, 0.15);
+    border: 1px solid rgba(229, 185, 114, 0.35);
+    padding: 2px 7px;
+    border-radius: 10px;
+}
+
+.tarot-quote-text {
+    font-family: var(--font-editorial);
+    font-size: 1.02rem;
+    color: var(--text-pure);
+    font-style: italic;
+    line-height: 1.44;
+    margin-bottom: 4px;
+}
+
+.tarot-dedication-tag {
+    font-size: 0.7rem;
+    color: var(--gold-accent);
+    letter-spacing: 1px;
+    padding-top: 6px;
+    border-top: 1px dashed rgba(229, 185, 114, 0.35);
+    width: 100%;
+}
+
+/* ==========================================================================
+   BOTÃO DE BARALHAR O TARÔ • HAUTE-COUTURE, MODERNO & LÚDICO
+   ========================================================================== */
+.tarot-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.btn-tarot-shuffle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 15px 34px;
+    background: linear-gradient(135deg, rgba(50, 8, 22, 0.92) 0%, rgba(18, 3, 8, 0.98) 50%, rgba(72, 10, 28, 0.92) 100%);
+    color: var(--gold-light);
+    border: 1.5px solid rgba(229, 185, 114, 0.75);
+    border-radius: 35px;
+    font-family: var(--font-heading);
+    font-size: 0.86rem;
+    font-weight: 700;
+    letter-spacing: 2.8px;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 24px rgba(229, 185, 114, 0.28), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+}
+
+.btn-tarot-glow {
+    position: absolute;
+    inset: -2px;
+    border-radius: 35px;
+    background: linear-gradient(90deg, transparent, rgba(229, 185, 114, 0.35), transparent);
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: transform 0.8s ease, opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.btn-shuffle-icon {
+    font-size: 0.98rem;
+    color: var(--bright-red);
+    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s ease;
+    filter: drop-shadow(0 0 8px rgba(230, 57, 70, 0.65));
+}
+
+.btn-tarot-text {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(110deg, #fff7e6 0%, #ffffff 40%, #e5b972 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.btn-tarot-sparkle {
+    font-size: 0.86rem;
+    color: var(--gold-accent);
+    opacity: 0.85;
+    animation: pulse 2.2s infinite ease-in-out;
+}
+
+.btn-tarot-shuffle:hover {
+    transform: translateY(-3px) scale(1.04);
+    border-color: #ffe08a;
+    box-shadow: 0 16px 42px rgba(0, 0, 0, 0.95), 0 0 35px rgba(229, 185, 114, 0.5), 0 0 22px rgba(230, 57, 70, 0.35);
+}
+
+.btn-tarot-shuffle:hover .btn-tarot-glow {
+    opacity: 1;
+    transform: translateX(100%);
+}
+
+.btn-tarot-shuffle:hover .btn-shuffle-icon {
+    transform: rotate(180deg) scale(1.25);
+    color: var(--gold-light);
+}
+
+.btn-tarot-shuffle:active {
+    transform: scale(0.97) translateY(0);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.85);
+}
+
+/* Espaçamento final da Galeria para o Dock */
+#galeria {
+    padding-bottom: calc(110px + env(safe-area-inset-bottom, 0px));
+}
+
+/* ==========================================================================
+   LIGHTBOX MODAL
+   ========================================================================== */
+.lightbox-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(14px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    padding: 20px;
+}
+
+.lightbox-modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.lightbox-content {
+    background: #ffffff;
+    padding: 16px 16px 22px;
+    border-radius: 6px;
+    max-width: 520px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(230, 57, 70, 0.4);
+    transform: scale(0.92);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lightbox-modal.active .lightbox-content {
+    transform: scale(1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -42px;
+    right: 0;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 2.2rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.lightbox-close:hover {
+    color: var(--bright-red);
+}
+
+#lightbox-img {
+    width: 100%;
+    max-height: 480px;
+    object-fit: contain;
+    border-radius: 3px;
+    background: #0d0205;
+}
+
+.lightbox-info {
+    margin-top: 12px;
+    text-align: center;
+    color: #2b0b14;
+}
+
+#lightbox-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--primary-red);
+    margin-bottom: 4px;
+}
+
+#lightbox-desc {
+    font-family: var(--font-editorial);
+    font-size: 1.05rem;
+    color: #555555;
+    font-style: italic;
+}
+
+/* ==========================================================================
+   ANIMAÇÕES & PARTICULAS FLUTUANTES
+   ========================================================================== */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes heartPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.18); }
+}
+
+@keyframes scrollWheel {
+    0% { transform: translate(-50%, 0); opacity: 1; }
+    100% { transform: translate(-50%, 12px); opacity: 0; }
+}
+
+/* Efeito Etéreo de Toque & Stardust (Sem emojis) */
+.celestial-ripple-ring {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    width: 36px;
+    height: 36px;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(229, 185, 114, 0.7);
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(230, 57, 70, 0.4), inset 0 0 10px rgba(229, 185, 114, 0.3);
+    animation: celestialRippleAnim 0.8s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes celestialRippleAnim {
+    0% {
+        opacity: 0.95;
+        transform: translate(-50%, -50%) scale(0.3);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(2.4);
+    }
+}
+
+.stardust-spark-point {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    border-radius: 50%;
+    animation: sparkDriftAnim 0.95s cubic-bezier(0.12, 0.8, 0.32, 1) forwards;
+}
+
+@keyframes sparkDriftAnim {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0.2);
+    }
+}
+
+/* ==========================================================================
+   BARRA DE NAVEGAÇÃO FLUTUANTE INFERIOR MOBILE (DOCK COM POLEGAR)
+   ========================================================================== */
+.mobile-bottom-dock {
+    display: none;
+    position: fixed;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 24px);
+    max-width: 440px;
+    background: rgba(20, 4, 10, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(230, 57, 70, 0.35);
+    border-radius: 35px;
+    padding: 6px 8px;
+    z-index: 150;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 20px rgba(230, 57, 70, 0.25);
+    justify-content: space-around;
+    align-items: center;
+}
+
+.dock-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 6px 8px;
+    border-radius: 20px;
+    font-size: 0.68rem;
+    font-weight: 500;
+    transition: var(--transition-smooth);
+    flex: 1;
+    text-align: center;
+}
+
+.dock-item i {
+    font-size: 1.05rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.dock-item:active {
+    transform: scale(0.92);
+}
+
+.dock-item.active {
+    color: var(--gold-accent);
+    background: rgba(230, 57, 70, 0.2);
+}
+
+.dock-item.active i {
+    color: var(--bright-red);
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 6px rgba(230, 57, 70, 0.8));
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE PREMIUM MOBILE & TABLET
+   ========================================================================== */
+@media (max-width: 900px) {
+    .nav-links {
+        gap: 14px;
+    }
+    .nav-links a {
+        font-size: 0.82rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-bottom-dock {
+        display: flex;
+    }
+
+    .navbar {
+        width: 100%;
+        top: 0;
+        left: 0;
+        transform: none;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+        border-top: none;
+        border-bottom: 1px solid rgba(229, 185, 114, 0.2);
+        background: rgba(8, 2, 5, 0.82);
+        padding: 0;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .navbar-inner {
+        padding: 10px 16px;
+    }
+
+    .brand-title {
+        font-size: 0.76rem;
+        letter-spacing: 2.2px;
+    }
+
+    .nav-audio-widget {
+        padding: 5px 11px;
+        font-size: 0.72rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero-section {
+        min-height: 100dvh;
+        padding: calc(75px + env(safe-area-inset-top, 0px)) 16px 60px;
+    }
+
+    .hero-portrait-image {
+        opacity: 0.28;
+        background-position: center 18%;
+    }
+
+    .hero-portrait-aurora {
+        width: 340px;
+        height: 340px;
+        filter: blur(35px);
+    }
+
+    .astrolabe-emblem {
+        width: 84px;
+        height: 84px;
+        margin-bottom: 16px;
+    }
+
+    .ring-outer {
+        width: 82px;
+        height: 82px;
+    }
+
+    .ring-inner {
+        width: 66px;
+        height: 66px;
+    }
+
+    .monogram-initials {
+        font-size: 1.12rem;
+    }
+
+    .monogram-year {
+        font-size: 0.56rem;
+    }
+
+    .btn-tarot-shuffle {
+        padding: 13px 26px;
+        font-size: 0.78rem;
+        letter-spacing: 2px;
+        gap: 9px;
+    }
+
+    /* Emblema Astrolábio Editorial calibrado para Mobile / Galaxy A15 */
+    .astrolabe-emblem {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 18px auto;
+    }
+
+    .ring-outer {
+        width: 98px;
+        height: 98px;
+    }
+
+    .ring-orbit {
+        width: 86px;
+        height: 86px;
+    }
+
+    .astrolabe-core {
+        width: 76px;
+        height: 76px;
+        padding: 2px 4px;
+    }
+
+    .monogram-sparkle {
+        font-size: 0.44rem;
+        margin-bottom: 1px;
+    }
+
+    .monogram-initials {
+        font-size: 1.25rem;
+        letter-spacing: 2.2px;
+        margin-left: 2.2px;
+    }
+
+    .monogram-year {
+        font-size: 0.50rem;
+        letter-spacing: 1.2px;
+        margin-top: 3px;
+    }
+
+    .btn-tarot-shuffle {
+        padding: 12px 24px;
+        font-size: 0.76rem;
+        letter-spacing: 1.8px;
+        gap: 8px;
+    }
+
+    .hero-glow {
+        width: 280px;
+        height: 280px;
+        filter: blur(35px);
+    }
+
+    .editorial-badge-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 16px;
+    }
+
+    .editorial-badge {
+        font-size: 0.56rem;
+        letter-spacing: 1.1px;
+        padding: 4px 10px;
+        gap: 6px;
+        max-width: 94%;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: clamp(1.85rem, 7.5vw, 2.5rem);
+        line-height: 1.15;
+    }
+
+    .hero-subtitle {
+        font-size: 0.98rem;
+        margin-bottom: 18px;
+    }
+
+    .clarice-quote-box {
+        padding: 18px 14px 14px;
+        margin-bottom: 20px;
+    }
+
+    .clarice-quote {
+        font-size: 1.08rem;
+        line-height: 1.5;
+    }
+
+    .drop-cap {
+        font-size: 2.6rem;
+        padding-right: 8px;
+    }
+
+    .section-container {
+        padding: 50px 14px 40px;
+    }
+
+    .section-header {
+        margin-bottom: 28px;
+    }
+
+    .section-title {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+
+    .editorial-grid, .psycho-editorial-grid, .chronicles-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .polaroid-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        max-width: 340px;
+        margin: 0 auto;
+    }
+
+    .editorial-card, .folio-card, .psycho-item {
+        padding: 22px 16px;
+    }
+
+    .psycho-item {
+        gap: 14px;
+    }
+
+    .editorial-pullquote {
+        padding: 22px 16px;
+    }
+
+    .editorial-pullquote p {
+        font-size: 1.15rem;
+    }
+
+    .photo-wrapper {
+        height: 275px;
+    }
+
+    .parchment-letter-card {
+        padding: 22px 16px !important;
+    }
+
+    .wax-seal-mini {
+        width: 42px;
+        height: 42px;
+    }
+
+    .handwritten-sign {
+        font-size: 1.7rem !important;
+    }
+
+    .tarot-card-3d {
+        width: min(300px, 86vw);
+        min-height: 485px;
+    }
+
+    .tarot-card-inner, .tarot-card-face {
+        min-height: 485px;
+    }
+
+    .tarot-border-inner {
+        padding: 16px 12px 12px;
+    }
+
+    .tarot-quote-text {
+        font-size: 0.95rem;
+        line-height: 1.42;
+    }
+
+    .tarot-fan {
+        height: 105px;
+    }
+
+    .tarot-mini-card {
+        width: 46px;
+        height: 80px;
+        margin: 0 -7px;
+    }
+
+    #lightbox-img {
+        max-height: 52vh;
+    }
+}
+
+/* Calibração Específica para Samsung Galaxy A15 (384px) e Telas Compactas */
+@media (max-width: 412px) {
+    .navbar-inner {
+        padding: 8px 12px;
+    }
+
+    .brand-title {
+        font-size: 0.74rem;
+        letter-spacing: 2px;
+    }
+
+    .nav-audio-widget {
+        padding: 4px 9px;
+        font-size: 0.68rem;
+    }
+
+    .hero-section {
+        padding: calc(65px + env(safe-area-inset-top, 0px)) 12px 48px;
+    }
+
+    .editorial-badge {
+        font-size: 0.54rem;
+        letter-spacing: 0.8px;
+        padding: 4px 8px;
+        gap: 5px;
+    }
+
+    .hero-title {
+        font-size: clamp(1.8rem, 7.2vw, 2.3rem);
+    }
+
+    .clarice-quote {
+        font-size: 1.02rem;
+    }
+
+    .mobile-bottom-dock {
+        width: calc(100% - 16px);
+        padding: 5px 4px;
+        bottom: calc(8px + env(safe-area-inset-bottom, 6px));
+    }
+
+    .dock-item {
+        padding: 4px 2px;
+        font-size: 0.60rem;
+    }
+
+    .dock-item i {
+        font-size: 0.95rem;
+    }
+
+    .tarot-card-3d {
+        width: min(290px, 86vw);
+        min-height: 475px;
+    }
+
+    .tarot-card-inner, .tarot-card-face {
+        min-height: 475px;
+    }
+
+    .photo-wrapper {
+        height: 260px;
+    }
+}

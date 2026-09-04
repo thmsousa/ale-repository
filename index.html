@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <title>A Hora da Nossa Estrela | Para Ale</title>
+    
+    <!-- Mobile PWA & Browser Theme Customization -->
+    <meta name="theme-color" content="#070205">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- Meta tags SEO e OpenGraph para compartilhamento -->
+    <meta name="description" content="Uma declaração cósmica, literária e psicológica sobre o reencontro de duas almas através do universo. Dedicado a Ale.">
+    <meta property="og:title" content="A Hora da Nossa Estrela 🌌❤️">
+    <meta property="og:description" content="Uma experiência interativa de literatura, psicologia, energias e reencarnação para Ale.">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts: Cormorant Garamond, Cinzel, Outfit, Great Vibes, Newsreader -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&family=Great+Vibes&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Barra de Progresso de Leitura Editorial -->
+    <div class="reading-progress-bar" id="reading-progress"></div>
+
+    <!-- Canvas para o Universo Orgânico (Nébulas Vivas & Brasas Estelares) -->
+    <canvas id="universe-canvas"></canvas>
+
+    <!-- BARRA DE NAVEGAÇÃO EDITORIAL HAUTE-COUTURE & ATEMPORAL -->
+    <header class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <div class="nav-brand" title="AV • Ale">
+                <span class="nav-symbol">✦</span>
+                <span class="brand-title">A.V.</span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#prologo">Prólogo</a></li>
+                <li><a href="#taro">Tarô</a></li>
+                <li><a href="#destino">Destino</a></li>
+                <li><a href="#cronicas">Crônicas</a></li>
+                <li><a href="#psicologia">Sintonia</a></li>
+                <li><a href="#galeria">Memórias</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="music-toggle" class="nav-audio-widget" title="Harmonia Cósmica">
+                    <div class="sound-wave-bars">
+                        <span class="bar bar-1"></span>
+                        <span class="bar bar-2"></span>
+                        <span class="bar bar-3"></span>
+                    </div>
+                    <span class="audio-label">Trilha Sonora</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- SEÇÃO 1: FOLHA DE ROSTO & PRÓLOGO CÓSMICO (HERO EDITORIAL DE IMPACTO) -->
+    <section class="hero-section" id="prologo">
+        <!-- Retrato de Fundo Editorial com Efeito Ethereal & Vinheta Suave -->
+        <div class="hero-portrait-container" aria-hidden="true">
+            <div class="hero-portrait-image" style="background-image: url('imgs/AV1.jpeg');"></div>
+            <div class="hero-portrait-overlay"></div>
+            <div class="hero-portrait-aurora"></div>
+        </div>
+
+        <div class="hero-glow"></div>
+        
+        <!-- Emblema Astrolábio Editorial de Alta Joalheria -->
+        <div class="astrolabe-emblem reveal-item" title="AV • 13 de Junho de 2006 • Dedicado a Ale">
+            <div class="astrolabe-ring ring-outer"></div>
+            <div class="astrolabe-ring ring-orbit">
+                <span class="orbit-pip pip-n">✦</span>
+                <span class="orbit-pip pip-s">✦</span>
+            </div>
+            <div class="astrolabe-core">
+                <span class="monogram-sparkle">✧</span>
+                <span class="monogram-initials">AV</span>
+                <span class="monogram-year">13.06.2006</span>
+            </div>
+        </div>
+
+        <div class="editorial-badge-wrapper reveal-item">
+            <div class="editorial-badge">
+                <span class="editorial-vol">VOL. I</span>
+                <span class="editorial-divider">|</span>
+                <span class="editorial-issue">13 DE JUNHO DE 2006</span>
+                <span class="editorial-divider">|</span>
+                <span class="editorial-tag">EDIÇÃO EXCLUSIVA</span>
+            </div>
+        </div>
+
+        <div class="hero-content reveal-item">
+            <h1 class="hero-title">
+                A Hora da <span class="highlight-editorial gold-shimmer-text">Nossa Estrela</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                Tratado sobre a metafísica do reencontro, literatura e afeto dedicado a <strong class="dedication-name gold-shimmer-text">Ale</strong>
+            </p>
+
+            <div class="clarice-quote-box">
+                <div class="quote-header-tag">
+                    <i class="fa-solid fa-feather-pointed"></i>
+                    <span>FRAGMENTO LITERÁRIO & FILOSÓFICO • CLARICE LISPECTOR</span>
+                </div>
+                <blockquote class="clarice-quote">
+                    <span class="drop-cap">T</span>udo no mundo começou com um sim. Uma molécula disse sim a outra molécula e nasceu a vida. E antes da pré-história havia a pré-história da pré-história e havia o nunca e havia o sim. Sempre houve. Não sei o quê, mas sei que o universo jamais começou.
+                </blockquote>
+                <div class="quote-footer">
+                    <span class="quote-book"><em>A Hora da Estrela</em> (1977)</span>
+                    <cite class="quote-author">— Clarice Lispector</cite>
+                </div>
+                <div class="philosophical-marginalia">
+                    <i class="fa-solid fa-infinity"></i>
+                    <span>"O inconsciente não conhece o tempo linear; ele apenas reconhece o eterno retorno do afeto."</span>
+                </div>
+            </div>
+
+            <div class="hero-subtle-divider">
+                <span>✦ ────── ❦ ────── ✦</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 2: CAPÍTULO I • O TARÔ DAS ESTRELAS & ARCANOS DO AFETO -->
+    <section class="section-container" id="taro">
+        <div class="section-header reveal-item">
+            <div class="chapter-mark">
+                <span class="chapter-num">CAPÍTULO I</span>
+                <span class="chapter-rule"></span>
+                <span class="chapter-theme">CARTOMANCIA LITERÁRIA & ARCANOS</span>
+            </div>
+            <h2 class="section-title">O Tarô das <span class="highlight-editorial">Estrelas & Arcanos</span></h2>
+            <p class="section-description">
+                Conecte a sua energia e retire uma lâmina sagrada do baralho. Cada Arcano revela um arquétipo de afeto, literatura e sincronia cósmica.
+            </p>
+        </div>
+
+        <!-- LEQUE DE CARTAS DO TARÔ INTERATIVO (7 LÂMINAS MÍSTICAS) -->
+        <div class="tarot-experience reveal-item">
+            
+            <div class="tarot-deck-container" id="tarot-deck-fan">
+                <p class="tarot-instruction">✦ Escolha uma das lâminas do baralho com seu toque ✦</p>
+                <div class="tarot-fan">
+                    <div class="tarot-mini-card" onclick="selectTarotCard(0)" style="--rot: -22deg; --tx: -54px;">
+                        <div class="tarot-back-pattern"><i class="fa-solid fa-sun mini-glyph"></i></div>
+                    </div>
+                    <div class="tarot-mini-card" onclick="selectTarotCard(1)" style="--rot: -14deg; --tx: -36px;">
+                        <div class="tarot-back-pattern"><i class="fa-solid fa-moon mini-glyph"></i></div>
+                    </div>
+                    <div class="tarot-mini-card" onclick="selectTarotCard(2)" style="--rot: -7deg; --tx: -18px;">
+                        <div class="tarot-back-pattern"><i class="fa-solid fa-star mini-glyph"></i></div>
+                    </div>
+                    <div class="tarot-mini-card active-card" onclick="selectTarotCard(3)" style="--rot: 0deg; --tx: 0px;">
+                        <div class="tarot-back-pattern"><i class="fa-solid fa-wand-magic-sparkles mini-glyph"></i></div>
+                    </div>
+                    <div class="tarot-mini-card" onclick="selectTarotCard(4)" style="--rot: 7deg; --tx: 18px;">
+                        <div class="tarot-back-pattern"><i class="fa-solid fa-star mini-glyph"></i></div>
+                    </div>
+                    <div class="tarot-mini-card" onclick="selectTarotCard(5)" style="--rot: 14deg; --tx: 36px;">
+                        <div class="tarot-back-pattern"><i class="fa-solid fa-moon mini-glyph"></i></div>
+                    </div>
+                    <div class="tarot-mini-card" onclick="selectTarotCard(6)" style="--rot: 22deg; --tx: 54px;">
+                        <div class="tarot-back-pattern"><i class="fa-solid fa-sun mini-glyph"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARTA DE TARÔ REVELADA EM DESTAQUE -->
+            <div class="tarot-stage">
+                <div class="tarot-card-3d" id="tarot-card" onclick="flipCurrentTarot()">
+                    <div class="tarot-card-inner">
+                        
+                        <!-- VERSO DA CARTA (GEOMETRIA SAGRADA & OURO) -->
+                        <div class="tarot-card-face tarot-card-back">
+                            <div class="tarot-holo-sheen"></div>
+                            <div class="tarot-border-outer">
+                                <div class="tarot-border-inner">
+                                    <div class="tarot-sun-center">
+                                        <i class="fa-solid fa-sun"></i>
+                                    </div>
+                                    <div class="tarot-back-title">ARCANOS DE ALE</div>
+                                    <div class="tarot-mystic-symbols">☉ ☽ A · V ☾ ☉</div>
+                                    <p class="tarot-touch-hint">Toque para desvendar o Arcano ✧</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FRENTE DA CARTA (O ARCANO REVELADO) -->
+                        <div class="tarot-card-face tarot-card-front" id="tarot-front-face">
+                            <div class="tarot-holo-sheen"></div>
+                            <div class="tarot-border-outer">
+                                <div class="tarot-border-inner">
+                                    <div class="tarot-numeral" id="tarot-numeral">XVII</div>
+                                    
+                                    <div class="tarot-illustration-frame">
+                                        <div class="tarot-glyph-icon" id="tarot-glyph">
+                                            <i class="fa-solid fa-star-and-crescent"></i>
+                                        </div>
+                                        <div class="tarot-arcane-name" id="tarot-arcane-title">L'ÉTOILE</div>
+                                        <div class="tarot-arcane-sub" id="tarot-arcane-sub">A ESTRELA</div>
+                                    </div>
+
+                                    <div class="tarot-reading-box">
+                                        <div class="tarot-keywords" id="tarot-keywords">
+                                            <span>Esperança</span>
+                                            <span>Luz Própria</span>
+                                            <span>Clarice</span>
+                                        </div>
+                                        <p class="tarot-quote-text" id="tarot-quote">
+                                            "A Estrela representa a sua presença: um ponto de luz sereno e límpido que guia e encanta sem fazer esforço."
+                                        </p>
+                                        <div class="tarot-dedication-tag" id="tarot-tag">
+                                            ✦ Arcano Consagrado a Ale ✦
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- CONTROLES DO TARÔ MODERNIZADOS & HAUTE-COUTURE -->
+                <div class="tarot-actions">
+                    <button class="btn-tarot-shuffle" onclick="drawRandomTarot()" aria-label="Baralhar e desvendar novo Arcano">
+                        <span class="btn-tarot-glow"></span>
+                        <i class="fa-solid fa-wand-magic-sparkles btn-shuffle-icon"></i>
+                        <span class="btn-tarot-text">Baralhar Arcanos</span>
+                        <span class="btn-tarot-sparkle">✧</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SEÇÃO 3: CAPÍTULO II • METAFÍSICA DO REENCONTRO (PLATÃO, NIETZSCHE & REENCARNAÇÃO) -->
+    <section class="section-container" id="destino">
+        <div class="section-header reveal-item">
+            <div class="chapter-mark">
+                <span class="chapter-num">CAPÍTULO II</span>
+                <span class="chapter-rule"></span>
+                <span class="chapter-theme">METAFÍSICA DO REENCONTRO</span>
+            </div>
+            <h2 class="section-title">O Déjà Vu das <span class="highlight-editorial">Vidas Passadas</span></h2>
+            <p class="section-description">
+                Da metempsicose platônica ao eterno retorno: quando duas almas já se amaram em outras encarnações, o presente não é um começo, mas a doce continuação de uma história que o tempo nunca conseguiu apagar.
+            </p>
+        </div>
+
+        <div class="editorial-grid">
+            <article class="editorial-card ornate-corners reveal-item">
+                <div class="corner-flourish corner-tl">⚜</div>
+                <div class="corner-flourish corner-tr">⚜</div>
+                <div class="corner-flourish corner-bl">⚜</div>
+                <div class="corner-flourish corner-br">⚜</div>
+                <div class="card-meta">
+                    <span class="meta-index">TOMO 01</span>
+                    <span class="meta-tag">ANAMNESE • PLATÃO</span>
+                </div>
+                <div class="card-icon"><i class="fa-solid fa-infinity"></i></div>
+                <h3 class="card-title">A Anamnese da Alma</h3>
+                <p class="card-text">
+                    <span class="card-lead">Conhecer você não foi um acaso; foi uma recordação.</span> Na filosofia de Platão, aprender e amar é lembrar (*anamnese*). A sensação de te encontrar carrega a serenidade de quem já procurava o teu olhar através de eras.
+                </p>
+                <div class="card-footer-stamp">
+                    <span>FILOSOFIA: ATEMPORAL</span>
+                    <i class="fa-solid fa-stamp"></i>
+                </div>
+            </article>
+
+            <article class="editorial-card featured-card ornate-corners reveal-item">
+                <div class="corner-flourish corner-tl">⚜</div>
+                <div class="corner-flourish corner-tr">⚜</div>
+                <div class="corner-flourish corner-bl">⚜</div>
+                <div class="corner-flourish corner-br">⚜</div>
+                <div class="card-meta">
+                    <span class="meta-index">TOMO 02</span>
+                    <span class="meta-tag">LENDA ANCESTRAL</span>
+                </div>
+                <div class="card-icon"><i class="fa-solid fa-timeline"></i></div>
+                <h3 class="card-title">O Fio Vermelho (Akai Ito)</h3>
+                <p class="card-text">
+                    <span class="card-lead">Um laço invisível que desafia a distância e o tempo.</span> Na tradição oriental, o fio pode emaranhar ou esticar através de vidas sucessivas, mas jamais se rompe. O meu destino sempre apontou com clareza para você, Ale.
+                </p>
+                <div class="card-footer-stamp">
+                    <span>ENERGIA: INQUEBRÁVEL</span>
+                    <i class="fa-solid fa-stamp"></i>
+                </div>
+            </article>
+
+            <article class="editorial-card ornate-corners reveal-item">
+                <div class="corner-flourish corner-tl">⚜</div>
+                <div class="corner-flourish corner-tr">⚜</div>
+                <div class="corner-flourish corner-bl">⚜</div>
+                <div class="corner-flourish corner-br">⚜</div>
+                <div class="card-meta">
+                    <span class="meta-index">TOMO 03</span>
+                    <span class="meta-tag">ETERNO RETORNO • NIETZSCHE</span>
+                </div>
+                <div class="card-icon"><i class="fa-solid fa-meteor"></i></div>
+                <h3 class="card-title">O Eterno Retorno</h3>
+                <p class="card-text">
+                    <span class="card-lead">O teste supremo do amor pelo destino (*Amor Fati*).</span> Se a vida se repetisse em infinitos ciclos por toda a eternidade, em todas elas eu escolheria cruzar o teu caminho e admirar a tua presença outra vez.
+                </p>
+                <div class="card-footer-stamp">
+                    <span>AMOR FATI: ETERNO</span>
+                    <i class="fa-solid fa-stamp"></i>
+                </div>
+            </article>
+        </div>
+
+        <div class="editorial-pullquote reveal-item">
+            <div class="pullquote-decor">❝</div>
+            <p>
+                "Se eu tivesse que viver mil vidas em séculos distintos, em todas elas eu procuraria por você até te encontrar de novo."
+            </p>
+            <span class="pullquote-sub">Anotação às margens da página • Caderno de Memórias</span>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 4: CAPÍTULO III • CADERNO DE FRAGMENTOS & ENTRELINHAS (LITERATURA PURA) -->
+    <section class="section-container" id="cronicas">
+        <div class="section-header reveal-item">
+            <div class="chapter-mark">
+                <span class="chapter-num">CAPÍTULO III</span>
+                <span class="chapter-rule"></span>
+                <span class="chapter-theme">CADERNO DE FRAGMENTOS</span>
+            </div>
+            <h2 class="section-title">Crônicas & <span class="highlight-editorial">Entrelinhas</span></h2>
+            <p class="section-description">
+                Citações literárias e anotações autênticas escritas para quem é poesia em forma de mulher.
+            </p>
+        </div>
+
+        <div class="chronicles-grid">
+            
+            <!-- FOLHETO 1: CLARICE & O EXISTIR -->
+            <article class="folio-card reveal-item">
+                <div class="folio-header">
+                    <span class="folio-tag">FOLHETO 01 • LITERATURA</span>
+                    <span class="folio-ref">CLARICE LISPECTOR</span>
+                </div>
+                <div class="folio-quote-block">
+                    <div class="folio-decor-line"></div>
+                    <blockquote class="folio-quote">
+                        "Escrever é procurar entender, é reproduzir o irreproduzível, é sentir até o último limite."
+                    </blockquote>
+                </div>
+                <div class="folio-content">
+                    <p>
+                        <span class="drop-cap">H</span>á pessoas que a gente lê como quem descobre o livro favorito da vida inteira. Ale, a sua presença tem essa rara virtude: uma serenidade que acalma e uma inteligência profunda que faz qualquer conversa simples se tornar inesquecível.
+                    </p>
+                </div>
+                <div class="folio-footer">
+                    <span>✦ Reflexão sobre a essência</span>
+                    <i class="fa-solid fa-feather"></i>
+                </div>
+            </article>
+
+            <!-- FOLHETO 2: LANA DEL REY & A BELEZA DO COTIDIANO -->
+            <article class="folio-card featured-folio reveal-item">
+                <div class="bookmark-ribbon"></div>
+                <div class="folio-header">
+                    <span class="folio-tag">FOLHETO 02 • ROMANCE VINTAGE</span>
+                    <span class="folio-ref">TRILHA SONORA</span>
+                </div>
+                <div class="folio-quote-block">
+                    <div class="folio-decor-line"></div>
+                    <blockquote class="folio-quote">
+                        "Heaven is a place on earth with you."
+                    </blockquote>
+                </div>
+                <div class="folio-content">
+                    <p>
+                        <span class="drop-cap">A</span> beleza das coisas boas ganha trilha sonora quando você está por perto. É a doçura dos detalhes, a risada compartilhada e a certeza confortável de que a vida é infinitamente mais bonita quando vivida com afeto e sensibilidade.
+                    </p>
+                </div>
+                <div class="folio-footer">
+                    <span>✦ Estética cinematográfica</span>
+                    <i class="fa-solid fa-rose"></i>
+                </div>
+            </article>
+
+            <!-- FOLHETO 3: CARTA MANUSCRITA & PERGAMINHO PARA ALE -->
+            <article class="folio-card parchment-letter-card ornate-corners reveal-item">
+                <div class="corner-flourish corner-tl">⚜</div>
+                <div class="corner-flourish corner-tr">⚜</div>
+                <div class="corner-flourish corner-bl">⚜</div>
+                <div class="corner-flourish corner-br">⚜</div>
+
+                <div class="folio-header">
+                    <span class="folio-tag parchment-tag"><i class="fa-solid fa-feather-pointed"></i> CARTA • MANUSCRITO</span>
+                    <span class="folio-ref parchment-ref">ARQUIVO DO CORAÇÃO</span>
+                </div>
+                <div class="folio-quote-block parchment-quote-block">
+                    <div class="folio-decor-line"></div>
+                    <blockquote class="folio-quote parchment-quote">
+                        "O afeto verdadeiro não exige rótulos; ele simplesmente admira, acolhe e cuida."
+                    </blockquote>
+                </div>
+                <div class="folio-content parchment-content">
+                    <p class="parchment-body-text">
+                        <span class="drop-cap parchment-drop-cap">E</span>ste espaço não foi concebido para impressionar com artifícios vazios, mas para que você nunca esqueça a imensidão da sua luz. Em um universo tão vasto, a sua existência é o que há de mais precioso, singular e encantador. Obrigado por iluminar os meus dias com a sua presença, sua doçura e a verdade do seu sorriso, <strong class="parchment-highlight-name">Ale</strong>.
+                    </p>
+                </div>
+                <div class="folio-footer handwritten-footer parchment-footer">
+                    <div class="wax-seal-mini" title="Selo de Afeto">
+                        <span class="seal-inner">A·V</span>
+                    </div>
+                    <div class="handwritten-signature-block">
+                        <span class="dedication-note">Para a minha estrela mais bonita,</span>
+                        <strong class="handwritten-sign">Com todo o meu carinho ❤️</strong>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- SEÇÃO 5: CAPÍTULO IV • TRATADO DA SINTONIA (FREUD, LACAN, JUNG & WINNICOTT) -->
+    <section class="section-container" id="psicologia">
+        <div class="section-header reveal-item">
+            <div class="chapter-mark">
+                <span class="chapter-num">CAPÍTULO IV</span>
+                <span class="chapter-rule"></span>
+                <span class="chapter-theme">PSICOLOGIA & SINTONIA</span>
+            </div>
+            <h2 class="section-title">O Tratado da <span class="highlight-editorial">Sintonia Psíquica</span></h2>
+            <p class="section-description">
+                De Freud e Lacan a Jung e Winnicott: a psicanálise tenta decifrar a alma humana, mas diante da admiração e leveza que sinto por você, Ale, a teoria se rende à pureza do sentimento.
+            </p>
+        </div>
+
+        <div class="psycho-editorial-grid">
+            
+            <!-- § 01: FREUD - EROS -->
+            <div class="psycho-item reveal-item">
+                <div class="psycho-sidebar">
+                    <span class="psycho-section-num">§&nbsp;01</span>
+                    <div class="psycho-line"></div>
+                </div>
+                <div class="psycho-body">
+                    <span class="psycho-kicker">PULSÃO DE VIDA • FREUD</span>
+                    <h3>Eros & a Construção do Afeto</h3>
+                    <p>
+                        Sigmund Freud conceituou *Eros* como a força motriz psíquica que busca harmonizar, criar laços e preservar o que há de mais precioso na existência. O carinho que sinto por você é essa pulsão límpida: a vontade sincera de ver a sua luz florescer.
+                    </p>
+                    <div class="psycho-tag-pill">Pulsão Vital • Eros 100%</div>
+                </div>
+            </div>
+
+            <!-- § 02: LACAN - O OLHAR E O ESPELHO -->
+            <div class="psycho-item reveal-item">
+                <div class="psycho-sidebar">
+                    <span class="psycho-section-num">§&nbsp;02</span>
+                    <div class="psycho-line"></div>
+                </div>
+                <div class="psycho-body">
+                    <span class="psycho-kicker">RECONHECIMENTO • LACAN</span>
+                    <h3>O Olhar do Reconhecimento</h3>
+                    <p>
+                        Na psicanálise de Jacques Lacan, o reconhecimento no outro é onde a subjetividade ganha serenidade. Encontrar Ale é ter a rara experiência de sintonia onde as palavras fluem com naturalidade e o coração se sente acolhido.
+                    </p>
+                    <div class="psycho-tag-pill">Acolhimento da Alma</div>
+                </div>
+            </div>
+
+            <!-- § 03: JUNG - SINCRONICIDADE -->
+            <div class="psycho-item reveal-item">
+                <div class="psycho-sidebar">
+                    <span class="psycho-section-num">§&nbsp;03</span>
+                    <div class="psycho-line"></div>
+                </div>
+                <div class="psycho-body">
+                    <span class="psycho-kicker">CONCEITO JUNGUIANO</span>
+                    <h3>Sincronicidade & Não-Acaso</h3>
+                    <p>
+                        Carl Jung definiu sincronicidade como a conjunção de acontecimentos conectados por um significado transcendente, jamais por acaso mecânico. O nosso encontro é o cosmos conspirando com precisão poética.
+                    </p>
+                    <div class="psycho-tag-pill">Convergência Significativa</div>
+                </div>
+            </div>
+
+            <!-- § 04: WINNICOTT - ESPAÇO POTENCIAL -->
+            <div class="psycho-item reveal-item">
+                <div class="psycho-sidebar">
+                    <span class="psycho-section-num">§&nbsp;04</span>
+                    <div class="psycho-line"></div>
+                </div>
+                <div class="psycho-body">
+                    <span class="psycho-kicker">ESPAÇO POTENCIAL • WINNICOTT</span>
+                    <h3>O Refúgio Seguro & a Autenticidade</h3>
+                    <p>
+                        Donald Winnicott descreveu o 'espaço potencial' como o ambiente de segurança onde podemos nos expressar sem máscaras. A sua presença proporciona essa paz rara: um lugar onde o afeto é autêntico, leve e descomplicado.
+                    </p>
+                    <div class="psycho-tag-pill">Porto Seguro • Paz Pura</div>
+                </div>
+            </div>
+
+            <!-- § 05: NEUROCIÊNCIA - RESSONÂNCIA LÍMBICA -->
+            <div class="psycho-item reveal-item">
+                <div class="psycho-sidebar">
+                    <span class="psycho-section-num">§&nbsp;05</span>
+                    <div class="psycho-line"></div>
+                </div>
+                <div class="psycho-body">
+                    <span class="psycho-kicker">NEUROAFETO</span>
+                    <h3>Ressonância Límbica & Calmaria</h3>
+                    <p>
+                        A capacidade biológica de duas mentes se sintonizarem em harmonia emocional mútua. A sua voz e as suas mensagens têm o poder imediato de desacelerar o ritmo do mundo e trazer tranquilidade para o dia.
+                    </p>
+                    <div class="psycho-tag-pill">Estado de Serenidade</div>
+                </div>
+            </div>
+
+            <!-- § 06: FENOMENOLOGIA - O EFEITO AURORA -->
+            <div class="psycho-item reveal-item">
+                <div class="psycho-sidebar">
+                    <span class="psycho-section-num">§&nbsp;06</span>
+                    <div class="psycho-line"></div>
+                </div>
+                <div class="psycho-body">
+                    <span class="psycho-kicker">FENOMENOLOGIA</span>
+                    <h3>O Efeito Aurora & Luz Própria</h3>
+                    <p>
+                        Na fenomenologia da percepção, a aurora é a luz serena que dissipa as sombras sem esforço. A inteligência, o carisma e a elegância de Ale iluminam qualquer ambiente com graça e autenticidade.
+                    </p>
+                    <div class="psycho-tag-pill">Brilho Próprio • Raro</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SEÇÃO 6: CAPÍTULO V • GALERIA EDITORIAL 35mm & MEMÓRIAS -->
+    <section class="section-container" id="galeria">
+        <div class="section-header reveal-item">
+            <div class="chapter-mark">
+                <span class="chapter-num">CAPÍTULO V</span>
+                <span class="chapter-rule"></span>
+                <span class="chapter-theme">CATÁLOGO ICONOGRÁFICO</span>
+            </div>
+            <h2 class="section-title">Galeria de <span class="highlight-editorial">Memórias & Inspirações</span></h2>
+            <p class="section-description">
+                Registros em estética editorial e película 35mm. Toque em qualquer imagem para inspecionar em alta resolução.
+            </p>
+        </div>
+
+        <div class="polaroid-grid" id="polaroid-grid">
+            
+            <!-- Foto 1: Ale (AV1) -->
+            <div class="polaroid-item reveal-item" onclick="openLightbox('imgs/AV1.jpeg', 'Ale', 'O brilho sereno que ilumina qualquer universo.')">
+                <div class="polaroid-inner">
+                    <div class="photo-tape"></div>
+                    <div class="polaroid-front">
+                        <div class="film-header">
+                            <span>EXP. 01 • 35mm</span>
+                            <span>ISO 200</span>
+                        </div>
+                        <div class="photo-wrapper">
+                            <img src="imgs/AV1.jpeg" alt="Ale" loading="lazy">
+                        </div>
+                        <div class="polaroid-caption">
+                            <span>Ale ✧</span>
+                            <small>Pura Luz & Graça</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto 2: Ale (AV2) -->
+            <div class="polaroid-item reveal-item" onclick="openLightbox('imgs/AV2.jpeg', 'Ale', 'A elegância e a nobreza em cada detalhe.')">
+                <div class="polaroid-inner">
+                    <div class="photo-tape"></div>
+                    <div class="polaroid-front">
+                        <div class="film-header">
+                            <span>EXP. 02 • 35mm</span>
+                            <span>ISO 200</span>
+                        </div>
+                        <div class="photo-wrapper">
+                            <img src="imgs/AV2.jpeg" alt="Ale" loading="lazy">
+                        </div>
+                        <div class="polaroid-caption">
+                            <span>Ale ✧</span>
+                            <small>Encanto Raro</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto 3: Ale (AV3) -->
+            <div class="polaroid-item reveal-item" onclick="openLightbox('imgs/AV3.jpeg', 'Ale', 'A beleza singular que transforma cada instante em poesia.')">
+                <div class="polaroid-inner">
+                    <div class="photo-tape"></div>
+                    <div class="polaroid-front">
+                        <div class="film-header">
+                            <span>EXP. 03 • 35mm</span>
+                            <span>ISO 200</span>
+                        </div>
+                        <div class="photo-wrapper">
+                            <img src="imgs/AV3.jpeg" alt="Ale" loading="lazy">
+                        </div>
+                        <div class="polaroid-caption">
+                            <span>Ale ✧</span>
+                            <small>Beleza Rara</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto 4: Clarice Lispector (CLAR1) -->
+            <div class="polaroid-item reveal-item" onclick="openLightbox('imgs/CLAR1.jpg', 'Clarice Lispector', 'A força da palavra e a profundidade da alma.')">
+                <div class="polaroid-inner">
+                    <div class="photo-tape"></div>
+                    <div class="polaroid-front">
+                        <div class="film-header">
+                            <span>EXP. 04 • LITERATURA</span>
+                            <span>ARQUIVO</span>
+                        </div>
+                        <div class="photo-wrapper">
+                            <img src="imgs/CLAR1.jpg" alt="Clarice Lispector" loading="lazy">
+                        </div>
+                        <div class="polaroid-caption">
+                            <span>Clarice 📜</span>
+                            <small>A Hora da Estrela</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto 5: Clarice (CLAR2) -->
+            <div class="polaroid-item reveal-item" onclick="openLightbox('imgs/CLAR2.jpg', 'Clarice Lispector', 'Existir é uma arte cheia de mistério e fascínio.')">
+                <div class="polaroid-inner">
+                    <div class="photo-tape"></div>
+                    <div class="polaroid-front">
+                        <div class="film-header">
+                            <span>EXP. 05 • ENSAIO</span>
+                            <span>ARQUIVO</span>
+                        </div>
+                        <div class="photo-wrapper">
+                            <img src="imgs/CLAR2.jpg" alt="Clarice Lispector" loading="lazy">
+                        </div>
+                        <div class="polaroid-caption">
+                            <span>Literatura 📖</span>
+                            <small>Sensibilidade Pura</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto 6: Clarice (CLAR3) -->
+            <div class="polaroid-item reveal-item" onclick="openLightbox('imgs/CLAR3.jpg', 'Clarice Lispector', 'A mente que traduziu sentimentos inefáveis.')">
+                <div class="polaroid-inner">
+                    <div class="photo-tape"></div>
+                    <div class="polaroid-front">
+                        <div class="film-header">
+                            <span>EXP. 06 • CRÔNICA</span>
+                            <span>ARQUIVO</span>
+                        </div>
+                        <div class="photo-wrapper">
+                            <img src="imgs/CLAR3.jpg" alt="Clarice Lispector" loading="lazy">
+                        </div>
+                        <div class="polaroid-caption">
+                            <span>Profundidade ✍️</span>
+                            <small>Inspiração</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto 7: Clarice (CLAR4) -->
+            <div class="polaroid-item reveal-item" onclick="openLightbox('imgs/CLAR4.jpg', 'Clarice Lispector', 'Cada olhar guarda um livro inteiro a ser desvendado.')">
+                <div class="polaroid-inner">
+                    <div class="photo-tape"></div>
+                    <div class="polaroid-front">
+                        <div class="film-header">
+                            <span>EXP. 07 • RETRATO</span>
+                            <span>ARQUIVO</span>
+                        </div>
+                        <div class="photo-wrapper">
+                            <img src="imgs/CLAR4.jpg" alt="Clarice Lispector" loading="lazy">
+                        </div>
+                        <div class="polaroid-caption">
+                            <span>Essência 🕯️</span>
+                            <small>Eternidade</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto 8: CN1 -->
+            <div class="polaroid-item reveal-item" onclick="openLightbox('imgs/CN1.jpg', 'Conexão Especial', 'Momentos e símbolos que marcam a nossa trajetória.')">
+                <div class="polaroid-inner">
+                    <div class="photo-tape"></div>
+                    <div class="polaroid-front">
+                        <div class="film-header">
+                            <span>EXP. 08 • SINTONIA</span>
+                            <span>PRESENTE</span>
+                        </div>
+                        <div class="photo-wrapper">
+                            <img src="imgs/CN1.jpg" alt="Conexão Especial" loading="lazy">
+                        </div>
+                        <div class="polaroid-caption">
+                            <span>Sintonia 💫</span>
+                            <small>Conexão Rara</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto 9: FLA1 -->
+            <div class="polaroid-item reveal-item" onclick="openLightbox('imgs/FLA1.jpg', 'Chama & Paixão', 'A cor rubi que aquece qualquer inverno com intensidade.')">
+                <div class="polaroid-inner">
+                    <div class="photo-tape"></div>
+                    <div class="polaroid-front">
+                        <div class="film-header">
+                            <span>EXP. 09 • CARMESIM</span>
+                            <span>INTENSIDADE</span>
+                        </div>
+                        <div class="photo-wrapper">
+                            <img src="imgs/FLA1.jpg" alt="Chama & Paixão" loading="lazy">
+                        </div>
+                        <div class="polaroid-caption">
+                            <span>Carmesim ❤️</span>
+                            <small>Fogo & Poesia</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto 10: Lana Del Rey (LDR1) -->
+            <div class="polaroid-item reveal-item" onclick="openLightbox('imgs/LDR1.jpg', 'Lana Del Rey', 'A trilha sonora do romance vintage e da estética cinematográfica.')">
+                <div class="polaroid-inner">
+                    <div class="photo-tape"></div>
+                    <div class="polaroid-front">
+                        <div class="film-header">
+                            <span>EXP. 10 • TRILHA</span>
+                            <span>CINEMA</span>
+                        </div>
+                        <div class="photo-wrapper">
+                            <img src="imgs/LDR1.jpg" alt="Lana Del Rey" loading="lazy">
+                        </div>
+                        <div class="polaroid-caption">
+                            <span>Melodia 🌹</span>
+                            <small>Romance Vintage</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <!-- BARRA DE NAVEGAÇÃO FLUTUANTE INFERIOR MOBILE (DOCK COM POLEGAR) -->
+    <nav class="mobile-bottom-dock" id="mobile-dock" aria-label="Navegação rápida mobile">
+        <a href="#prologo" class="dock-item active" data-section="prologo" title="Início">
+            <i class="fa-solid fa-star"></i>
+            <span>Início</span>
+        </a>
+        <a href="#taro" class="dock-item" data-section="taro" title="Tarô">
+            <i class="fa-solid fa-sun"></i>
+            <span>Tarô</span>
+        </a>
+        <a href="#destino" class="dock-item" data-section="destino" title="Destino">
+            <i class="fa-solid fa-infinity"></i>
+            <span>Destino</span>
+        </a>
+        <a href="#cronicas" class="dock-item" data-section="cronicas" title="Crônicas">
+            <i class="fa-solid fa-feather-pointed"></i>
+            <span>Crônicas</span>
+        </a>
+        <a href="#psicologia" class="dock-item" data-section="psicologia" title="Sintonia">
+            <i class="fa-solid fa-brain"></i>
+            <span>Sintonia</span>
+        </a>
+        <a href="#galeria" class="dock-item" data-section="galeria" title="Memórias">
+            <i class="fa-solid fa-camera-retro"></i>
+            <span>Fotos</span>
+        </a>
+    </nav>
+
+    <!-- LIGHTBOX MODAL PARA AS FOTOS -->
+    <div class="lightbox-modal" id="lightbox" onclick="closeLightbox(event)">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Fechar modal">&times;</button>
+            <img id="lightbox-img" src="" alt="Destaque">
+            <div class="lightbox-info">
+                <h4 id="lightbox-title">Título</h4>
+                <p id="lightbox-desc">Descrição</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT PRINCIPAL -->
+    <script src="app.js"></script>
+</body>
+</html>
