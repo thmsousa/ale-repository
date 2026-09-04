@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initUniverseCanvas();
     initClickSparkles();
     initSoundSystem();
+    initCosmicChronometer();
+    initPopoverCloser();
     initMobileDockScrollSpy();
     initReadingProgressBar();
     initScrollReveal();
@@ -850,16 +852,68 @@ document.addEventListener('keydown', (e) => {
 });
 
 /* ==========================================================================
-   10. SISTEMA DE ÁUDIO AMBIENTE & SINTETIZADOR CÓSMICO (WEB AUDIO API)
+   10. SISTEMA DE ÁUDIO AMBIENTE & SINTETIZADOR DUAL (COSMIC & LANA DEL REY)
    ========================================================================== */
 let audioCtx = null;
 let isMusicPlaying = false;
 let musicInterval = null;
+let currentSoundTrack = 'cosmic'; // 'cosmic' | 'lana'
+let lanaChordIndex = 0;
 
 function initSoundSystem() {
     const musicBtn = document.getElementById('music-toggle');
     if (musicBtn) {
         musicBtn.addEventListener('click', toggleCosmicMusic);
+    }
+}
+
+function initPopoverCloser() {
+    document.addEventListener('click', (e) => {
+        const popover = document.getElementById('audio-selector-popover');
+        const trigger = document.getElementById('track-selector-btn');
+        if (popover && popover.classList.contains('active')) {
+            if (!popover.contains(e.target) && !trigger.contains(e.target)) {
+                popover.classList.remove('active');
+            }
+        }
+    });
+}
+
+function toggleTrackSelector(e) {
+    if (e) e.stopPropagation();
+    const popover = document.getElementById('audio-selector-popover');
+    if (popover) {
+        popover.classList.toggle('active');
+    }
+}
+
+function selectAudioTrack(track) {
+    currentSoundTrack = track;
+    const btnCosmic = document.getElementById('track-cosmic');
+    const btnLana = document.getElementById('track-lana');
+    const label = document.getElementById('audio-track-label');
+
+    if (btnCosmic && btnLana) {
+        btnCosmic.classList.toggle('active', track === 'cosmic');
+        btnLana.classList.toggle('active', track === 'lana');
+    }
+
+    if (track === 'lana') {
+        if (label && isMusicPlaying) label.textContent = 'Lana (Piano) ♪';
+        playLanaNote();
+    } else {
+        if (label && isMusicPlaying) label.textContent = 'Celestial ♪';
+        playGenerativeNote();
+    }
+
+    // Fecha o popover
+    const popover = document.getElementById('audio-selector-popover');
+    if (popover) popover.classList.remove('active');
+
+    // Se estiver tocando, reinicia com a nova atmosfera
+    if (isMusicPlaying) {
+        if (musicInterval) clearInterval(musicInterval);
+        startGenerativeAmbience();
     }
 }
 
@@ -879,11 +933,11 @@ function toggleCosmicMusic() {
     const btn = document.getElementById('music-toggle');
     if (!btn) return;
 
-    const label = btn.querySelector('.audio-label') || btn.querySelector('.music-label');
+    const label = document.getElementById('audio-track-label') || btn.querySelector('.audio-label');
 
     if (!isMusicPlaying) {
         isMusicPlaying = true;
-        if (label) label.textContent = 'Tocando ♪';
+        if (label) label.textContent = currentSoundTrack === 'lana' ? 'Lana (Piano) ♪' : 'Tocando ♪';
         btn.classList.add('is-playing');
         startGenerativeAmbience();
     } else {
@@ -898,6 +952,7 @@ function toggleCosmicMusic() {
     }
 }
 
+/* --- TRILHA 1: SINOS CÓSMICOS & HARPAS PENTATÔNICAS --- */
 const cosmicNotes = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33, 659.25];
 
 function playGenerativeNote() {
@@ -921,13 +976,74 @@ function playGenerativeNote() {
     osc.stop(audioCtx.currentTime + 4.6);
 }
 
+/* --- TRILHA 2: LANA DEL REY (PIANO LÍRICO & CORDAS VINTAGE) --- */
+/* Progressão cinematográfica nostálgica (Dm -> Bb -> F -> C) */
+const lanaChords = [
+    { root: 146.83, notes: [293.66, 349.23, 440.00, 587.33] }, // Dm
+    { root: 116.54, notes: [233.08, 293.66, 349.23, 466.16] }, // Bb
+    { root: 174.61, notes: [261.63, 349.23, 440.00, 523.25] }, // F
+    { root: 130.81, notes: [196.00, 261.63, 329.63, 392.00] }  // C
+];
+
+function playLanaNote() {
+    if (!isMusicPlaying || !audioCtx) return;
+
+    const chord = lanaChords[lanaChordIndex % lanaChords.length];
+    lanaChordIndex++;
+    const now = audioCtx.currentTime;
+
+    // 1. Baixo aveludado (warm cello/bass drone)
+    const bassOsc = audioCtx.createOscillator();
+    const bassGain = audioCtx.createGain();
+    bassOsc.type = 'triangle';
+    bassOsc.frequency.setValueAtTime(chord.root, now);
+    bassGain.gain.setValueAtTime(0.001, now);
+    bassGain.gain.exponentialRampToValueAtTime(0.04, now + 0.8);
+    bassGain.gain.exponentialRampToValueAtTime(0.0001, now + 4.2);
+    bassOsc.connect(bassGain);
+    bassGain.connect(audioCtx.destination);
+    bassOsc.start(now);
+    bassOsc.stop(now + 4.3);
+
+    // 2. Arpejo de Piano Vintage (Rhodes/felt style com ataque delicado)
+    chord.notes.forEach((freq, idx) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        const filter = audioCtx.createBiquadFilter();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now + idx * 0.28);
+
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(1200, now);
+
+        gain.gain.setValueAtTime(0.001, now + idx * 0.28);
+        gain.gain.exponentialRampToValueAtTime(0.045, now + idx * 0.28 + 0.08);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.28 + 3.2);
+
+        osc.connect(filter);
+        filter.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start(now + idx * 0.28);
+        osc.stop(now + idx * 0.28 + 3.3);
+    });
+}
+
 function startGenerativeAmbience() {
-    playGenerativeNote();
-    musicInterval = setInterval(() => {
-        if (Math.random() > 0.35) {
-            playGenerativeNote();
-        }
-    }, 2000);
+    if (currentSoundTrack === 'lana') {
+        playLanaNote();
+        musicInterval = setInterval(() => {
+            playLanaNote();
+        }, 3400);
+    } else {
+        playGenerativeNote();
+        musicInterval = setInterval(() => {
+            if (Math.random() > 0.35) {
+                playGenerativeNote();
+            }
+        }, 2000);
+    }
 }
 
 function playChimeSound(type = 'tarot') {
@@ -1084,4 +1200,127 @@ function initMobileDockScrollSpy() {
     });
 
     sections.forEach((section) => observer.observe(section));
+}
+
+/* ==========================================================================
+   12. CRONÔMETRO CÓSMICO DE EXISTÊNCIA (DESDE 13 DE JUNHO DE 2006)
+   ========================================================================== */
+function initCosmicChronometer() {
+    const elDays = document.getElementById('chrono-days');
+    const elHours = document.getElementById('chrono-hours');
+    const elMins = document.getElementById('chrono-mins');
+    const elSecs = document.getElementById('chrono-secs');
+    const elHighlight = document.getElementById('chrono-days-highlight');
+
+    if (!elDays || !elHours || !elMins || !elSecs) return;
+
+    // Data de nascimento de Ale: 13 de Junho de 2006 (00:00:00 GMT-0300)
+    const birthDate = new Date('2006-06-13T00:00:00-03:00').getTime();
+
+    function updateChronometer() {
+        const now = new Date().getTime();
+        const diff = Math.max(0, now - birthDate);
+
+        const totalSeconds = Math.floor(diff / 1000);
+        const days = Math.floor(totalSeconds / (3600 * 24));
+        const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+        const mins = Math.floor((totalSeconds % 3600) / 60);
+        const secs = totalSeconds % 60;
+
+        elDays.textContent = days.toLocaleString('pt-BR');
+        elHours.textContent = String(hours).padStart(2, '0');
+        elMins.textContent = String(mins).padStart(2, '0');
+        elSecs.textContent = String(secs).padStart(2, '0');
+
+        if (elHighlight) {
+            elHighlight.textContent = days.toLocaleString('pt-BR');
+        }
+    }
+
+    updateChronometer();
+    setInterval(updateChronometer, 1000);
+}
+
+/* ==========================================================================
+   13. CARTA SECRETA À LUZ DE VELAS (MODAL DE IMERSÃO TOTAL)
+   ========================================================================== */
+function openCandlelightLetter() {
+    const modal = document.getElementById('candlelight-modal');
+    if (!modal) return;
+
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    playHarmonicChord();
+}
+
+function closeCandlelightLetter() {
+    const modal = document.getElementById('candlelight-modal');
+    if (!modal) return;
+
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+
+    playChime(440);
+}
+
+// Fechar com tecla Escape
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeCandlelightLetter();
+    }
+});
+
+/* ==========================================================================
+   14. MARCADOR DE PÁGINA ("GUARDAR COMO LEMBRANÇA")
+   ========================================================================== */
+function bookmarkCurrentArcane() {
+    const titleEl = document.getElementById('tarot-arcane-title');
+    const subEl = document.getElementById('tarot-arcane-sub');
+    const quoteEl = document.getElementById('tarot-quote');
+
+    const cardTitle = titleEl ? titleEl.textContent.trim() : 'Arcano';
+    const cardSub = subEl ? subEl.textContent.trim() : '';
+    const quote = quoteEl ? quoteEl.textContent.trim() : '';
+
+    const textToSave = `✦ Lembrança: ${cardTitle} (${cardSub})\n${quote}\n— A Hora da Nossa Estrela 🌌`;
+
+    // Tenta copiar para a área de transferência
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(textToSave).catch(() => {});
+    }
+
+    // Salva no LocalStorage
+    try {
+        localStorage.setItem('ale_lembranca_arcano', JSON.stringify({
+            title: cardTitle,
+            sub: cardSub,
+            quote: quote,
+            savedAt: new Date().toISOString()
+        }));
+    } catch (e) {}
+
+    playChimeSound('tarot');
+    showToast('Lembrança Guardada ✧', 'O Arcano foi guardado como lembrança no seu celular.');
+}
+
+let toastTimeout = null;
+function showToast(title, message) {
+    const toast = document.getElementById('bookmark-toast');
+    if (!toast) return;
+
+    const titleEl = document.getElementById('toast-title');
+    const msgEl = document.getElementById('toast-message');
+
+    if (titleEl) titleEl.textContent = title;
+    if (msgEl) msgEl.textContent = message;
+
+    toast.classList.add('active');
+
+    if (toastTimeout) clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => {
+        toast.classList.remove('active');
+    }, 3800);
 }

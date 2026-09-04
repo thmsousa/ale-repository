@@ -59,8 +59,28 @@
                         <span class="bar bar-2"></span>
                         <span class="bar bar-3"></span>
                     </div>
-                    <span class="audio-label">Trilha Sonora</span>
+                    <span class="audio-label" id="audio-track-label">Trilha Sonora</span>
                 </button>
+                <button id="track-selector-btn" class="nav-track-toggle" title="Alternar Trilha Sonora" onclick="toggleTrackSelector(event)" aria-label="Opções de Trilha Sonora">
+                    <i class="fa-solid fa-sliders"></i>
+                </button>
+                <div class="audio-selector-popover" id="audio-selector-popover">
+                    <span class="popover-title">✦ Atmosfera Sonora</span>
+                    <button class="track-option active" id="track-cosmic" onclick="selectAudioTrack('cosmic')">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <div class="track-meta">
+                            <strong>Harmonia Celestial</strong>
+                            <small>Sinos cósmicos & harpas etéreas</small>
+                        </div>
+                    </button>
+                    <button class="track-option" id="track-lana" onclick="selectAudioTrack('lana')">
+                        <i class="fa-solid fa-music"></i>
+                        <div class="track-meta">
+                            <strong>Lana Del Rey (Instrumental)</strong>
+                            <small>Piano lírico & cordas melancólicas</small>
+                        </div>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
@@ -124,6 +144,40 @@
                 <div class="philosophical-marginalia">
                     <i class="fa-solid fa-infinity"></i>
                     <span>"O inconsciente não conhece o tempo linear; ele apenas reconhece o eterno retorno do afeto."</span>
+                </div>
+            </div>
+
+            <!-- CRONÔMETRO CÓSMICO DE EXISTÊNCIA (13.06.2006) -->
+            <div class="cosmic-chronometer reveal-item" id="cosmic-chronometer" title="Contador Cósmico de Existência • 13 de Junho de 2006">
+                <div class="chronometer-inner">
+                    <div class="chrono-header">
+                        <i class="fa-solid fa-hourglass-half chrono-icon"></i>
+                        <span class="chrono-kicker">CRONÔMETRO CELESTE DE EXISTÊNCIA</span>
+                    </div>
+                    <div class="chrono-counter-grid">
+                        <div class="chrono-unit">
+                            <span class="chrono-number" id="chrono-days">---</span>
+                            <span class="chrono-label">DIAS</span>
+                        </div>
+                        <span class="chrono-separator">:</span>
+                        <div class="chrono-unit">
+                            <span class="chrono-number" id="chrono-hours">--</span>
+                            <span class="chrono-label">HORAS</span>
+                        </div>
+                        <span class="chrono-separator">:</span>
+                        <div class="chrono-unit">
+                            <span class="chrono-number" id="chrono-mins">--</span>
+                            <span class="chrono-label">MIN</span>
+                        </div>
+                        <span class="chrono-separator">:</span>
+                        <div class="chrono-unit">
+                            <span class="chrono-number" id="chrono-secs">--</span>
+                            <span class="chrono-label">SEG</span>
+                        </div>
+                    </div>
+                    <p class="chrono-statement">
+                        "Há mais de <strong id="chrono-days-highlight">7.000</strong> dias o universo é infinitamente mais bonito, límpido e iluminado porque <span class="gold-shimmer-text">Ale</span> existe."
+                    </p>
                 </div>
             </div>
 
@@ -240,6 +294,10 @@
                         <span class="btn-tarot-text">Baralhar Arcanos</span>
                         <span class="btn-tarot-sparkle">✧</span>
                     </button>
+                    <button class="btn-tarot-bookmark" onclick="bookmarkCurrentArcane()" aria-label="Guardar este Arcano como Lembrança" title="Guardar como Lembrança">
+                        <i class="fa-solid fa-ribbon"></i>
+                        <span class="btn-bookmark-text">Guardar Lembrança</span>
+                    </button>
                 </div>
             </div>
 
@@ -256,7 +314,7 @@
             </div>
             <h2 class="section-title">O Déjà Vu das <span class="highlight-editorial">Vidas Passadas</span></h2>
             <p class="section-description">
-                Da metempsicose platônica ao eterno retorno: quando duas almas já se amaram em outras encarnações, o presente não é um começo, mas a doce continuação de uma história que o tempo nunca conseguiu apagar.
+                Da metempsicose platônica ao entrelaçamento quântico das almas: quando energias ancestrais já compartilharam a mesma órbita em outras encarnações, o reencontro no presente não é um acaso mecânico, mas a lei gravitacional do próprio universo conspirando para unir o que o tempo jamais separou.
             </p>
         </div>
 
@@ -273,7 +331,7 @@
                 <div class="card-icon"><i class="fa-solid fa-infinity"></i></div>
                 <h3 class="card-title">A Anamnese da Alma</h3>
                 <p class="card-text">
-                    <span class="card-lead">Conhecer você não foi um acaso; foi uma recordação.</span> Na filosofia de Platão, aprender e amar é lembrar (*anamnese*). A sensação de te encontrar carrega a serenidade de quem já procurava o teu olhar através de eras.
+                    <span class="card-lead">Conhecer você não foi um acaso; foi uma recordação.</span> Na filosofia de Platão, aprender e amar é lembrar (*anamnese*). A sensação de te encontrar carrega a serenidade de quem já procurava o teu olhar através de eras e encarnações.
                 </p>
                 <div class="card-footer-stamp">
                     <span>FILOSOFIA: ATEMPORAL</span>
@@ -313,10 +371,30 @@
                 <div class="card-icon"><i class="fa-solid fa-meteor"></i></div>
                 <h3 class="card-title">O Eterno Retorno</h3>
                 <p class="card-text">
-                    <span class="card-lead">O teste supremo do amor pelo destino (*Amor Fati*).</span> Se a vida se repetisse em infinitos ciclos por toda a eternidade, em todas elas eu escolheria cruzar o teu caminho e admirar a tua presença outra vez.
+                    <span class="card-lead">O teste supremo do amor pelo destino (*Amor Fati*).</span> Se a vida se repetisse em infinitos ciclos cósmicos por toda a eternidade, em todas elas eu escolheria cruzar o teu caminho e admirar a tua presença outra vez.
                 </p>
                 <div class="card-footer-stamp">
                     <span>AMOR FATI: ETERNO</span>
+                    <i class="fa-solid fa-stamp"></i>
+                </div>
+            </article>
+
+            <article class="editorial-card ornate-corners reveal-item">
+                <div class="corner-flourish corner-tl">⚜</div>
+                <div class="corner-flourish corner-tr">⚜</div>
+                <div class="corner-flourish corner-bl">⚜</div>
+                <div class="corner-flourish corner-br">⚜</div>
+                <div class="card-meta">
+                    <span class="meta-index">TOMO 04</span>
+                    <span class="meta-tag">ENTRELAÇAMENTO QUÂNTICO</span>
+                </div>
+                <div class="card-icon"><i class="fa-solid fa-atom"></i></div>
+                <h3 class="card-title">A Física do Reencontro</h3>
+                <p class="card-text">
+                    <span class="card-lead">Partículas que já estiveram unidas no início do cosmos vibram em uníssono para sempre.</span> A física chama de entrelaçamento quântico; as almas chamam de reconhecimento imediato. Não importa quantos séculos passem, energias que vibram na mesma frequência sempre voltam a se encontrar no universo.
+                </p>
+                <div class="card-footer-stamp">
+                    <span>ENERGIA: UNIVERSAL</span>
                     <i class="fa-solid fa-stamp"></i>
                 </div>
             </article>
@@ -341,7 +419,7 @@
             </div>
             <h2 class="section-title">Crônicas & <span class="highlight-editorial">Entrelinhas</span></h2>
             <p class="section-description">
-                Citações literárias e anotações autênticas escritas para quem é poesia em forma de mulher.
+                Citações literárias, ensaios breves e aforismos sobre a metafísica da escrita, o tempo e os encontros atemporais da alma.
             </p>
         </div>
 
@@ -361,7 +439,7 @@
                 </div>
                 <div class="folio-content">
                     <p>
-                        <span class="drop-cap">H</span>á pessoas que a gente lê como quem descobre o livro favorito da vida inteira. Ale, a sua presença tem essa rara virtude: uma serenidade que acalma e uma inteligência profunda que faz qualquer conversa simples se tornar inesquecível.
+                        <span class="drop-cap">H</span>á certas presenças no mundo que a literatura tenta decifrar como quem contempla a luz da primeira estrela da tarde. O ato de escrever não é inventar, mas testemunhar o mistério de existir. Quando duas consciências se reconhecem na imensidão do tempo, as palavras deixam de ser mero artifício e se transformam em silêncio compartilhado.
                     </p>
                 </div>
                 <div class="folio-footer">
@@ -385,7 +463,7 @@
                 </div>
                 <div class="folio-content">
                     <p>
-                        <span class="drop-cap">A</span> beleza das coisas boas ganha trilha sonora quando você está por perto. É a doçura dos detalhes, a risada compartilhada e a certeza confortável de que a vida é infinitamente mais bonita quando vivida com afeto e sensibilidade.
+                        <span class="drop-cap">A</span> beleza das coisas eternas reside na sua doce fragilidade. O reflexo dourado de um entardecer de verão, a cadência lenta de uma canção vintage tocando na penumbra, o perfume de páginas guardadas. A memória é a única máquina do tempo capaz de eternizar o efêmero: aquilo que toca a alma nunca mais se perde no esquecimento.
                     </p>
                 </div>
                 <div class="folio-footer">
@@ -394,7 +472,7 @@
                 </div>
             </article>
 
-            <!-- FOLHETO 3: CARTA MANUSCRITA & PERGAMINHO PARA ALE -->
+            <!-- FOLHETO 3: O MANUSCRITO & A TINTA DO TEMPO -->
             <article class="folio-card parchment-letter-card ornate-corners reveal-item">
                 <div class="corner-flourish corner-tl">⚜</div>
                 <div class="corner-flourish corner-tr">⚜</div>
@@ -402,31 +480,52 @@
                 <div class="corner-flourish corner-br">⚜</div>
 
                 <div class="folio-header">
-                    <span class="folio-tag parchment-tag"><i class="fa-solid fa-feather-pointed"></i> CARTA • MANUSCRITO</span>
-                    <span class="folio-ref parchment-ref">ARQUIVO DO CORAÇÃO</span>
+                    <span class="folio-tag parchment-tag"><i class="fa-solid fa-feather-pointed"></i> MANUSCRITO • LINHO ANTIGO</span>
+                    <span class="folio-ref parchment-ref">ARQUIVO ATEMPORAL</span>
                 </div>
                 <div class="folio-quote-block parchment-quote-block">
                     <div class="folio-decor-line"></div>
                     <blockquote class="folio-quote parchment-quote">
-                        "O afeto verdadeiro não exige rótulos; ele simplesmente admira, acolhe e cuida."
+                        "O tempo não destrói o que foi gravado com a tinta indelével da sensibilidade."
                     </blockquote>
                 </div>
                 <div class="folio-content parchment-content">
                     <p class="parchment-body-text">
-                        <span class="drop-cap parchment-drop-cap">E</span>ste espaço não foi concebido para impressionar com artifícios vazios, mas para que você nunca esqueça a imensidão da sua luz. Em um universo tão vasto, a sua existência é o que há de mais precioso, singular e encantador. Obrigado por iluminar os meus dias com a sua presença, sua doçura e a verdade do seu sorriso, <strong class="parchment-highlight-name">Ale</strong>.
+                        <span class="drop-cap parchment-drop-cap">A</span>s grandes bibliotecas do mundo guardam pergaminhos que atravessaram impérios e eras. Palavras traçadas com verdade e delicadeza têm o poder de flutuar sobre os séculos. Não há distância cósmica nem passagem de calendário capaz de esmaecer a harmonia de dois espíritos que aprenderam a decifrar a poesia do universo nas menores entrelinhas do silêncio.
                     </p>
                 </div>
                 <div class="folio-footer handwritten-footer parchment-footer">
-                    <div class="wax-seal-mini" title="Selo de Afeto">
+                    <div class="wax-seal-mini" title="Chancela Editorial">
                         <span class="seal-inner">A·V</span>
                     </div>
                     <div class="handwritten-signature-block">
-                        <span class="dedication-note">Para a minha estrela mais bonita,</span>
-                        <strong class="handwritten-sign">Com todo o meu carinho ❤️</strong>
+                        <span class="dedication-note">Anotação às margens da página,</span>
+                        <strong class="handwritten-sign">Tratado de Poética ✧</strong>
                     </div>
                 </div>
             </article>
 
+        </div>
+
+        <!-- CONVITE À CARTA SECRETA À LUZ DE VELAS ("TOQUE PARA DESDOBRAR") -->
+        <div class="secret-candle-wrapper reveal-item">
+            <div class="secret-candle-box" onclick="openCandlelightLetter()">
+                <div class="candle-ambient-glow"></div>
+                <div class="mini-candle">
+                    <div class="candle-flame"></div>
+                    <div class="candle-wick"></div>
+                    <div class="candle-wax"></div>
+                </div>
+                <div class="candle-text-group">
+                    <span class="candle-kicker">✦ CONFISSÃO RESERVADA • MEIA-NOITE</span>
+                    <h3 class="candle-heading">Carta Secreta à Luz de Velas</h3>
+                    <p class="candle-desc">Toque para apagar as luzes da página e desdobrar as palavras escritas do coração que só a chama de uma vela pode iluminar.</p>
+                </div>
+                <button class="btn-unfold-letter" aria-label="Desdobrar Carta Secreta">
+                    <span>Desdobrar</span>
+                    <i class="fa-solid fa-envelope-open-text"></i>
+                </button>
+            </div>
         </div>
     </section>
 
@@ -442,6 +541,41 @@
             <p class="section-description">
                 De Freud e Lacan a Jung e Winnicott: a psicanálise tenta decifrar a alma humana, mas diante da admiração e leveza que sinto por você, Ale, a teoria se rende à pureza do sentimento.
             </p>
+        </div>
+
+        <!-- ARQUÉTIPO CELESTE DE 13 DE JUNHO (GÊMEOS & MERCÚRIO) -->
+        <div class="gemini-archetype-card reveal-item">
+            <div class="gemini-badge-top">
+                <span class="gemini-zodiac-icon">♊</span>
+                <span class="gemini-badge-label">ARQUÉTIPO CELESTE • 13 DE JUNHO</span>
+                <span class="gemini-mercury-icon">☿</span>
+            </div>
+            <div class="gemini-inner-content">
+                <div class="gemini-left-crest">
+                    <div class="gemini-circle-glyph">
+                        <i class="fa-solid fa-feather-pointed"></i>
+                    </div>
+                    <span class="element-tag">ELEMENTO AR • MERCÚRIO</span>
+                </div>
+                <div class="gemini-text-block">
+                    <h3 class="gemini-headline">A Mente Luminosa de 13 de Junho</h3>
+                    <p class="gemini-lead-quote">
+                        "Quem nasce sob o sopro do Ar e a regência de Mercúrio não apenas conversa: tece encantos e transforma o cotidiano em literatura."
+                    </p>
+                    <p class="gemini-description">
+                        Nascida em 13 de junho sob o signo de Gêmeos, Ale é guardiã de uma mente ágil, curiosa e fascinante. Regida por Mercúrio — o astro da comunicação límpida, dos livros e da inteligência perspicaz —, sua presença tem o dom raro de fazer qualquer conversa comum se transformar em poesia.
+                    </p>
+                    <p class="gemini-description">
+                        O elemento Ar confere a ela essa leveza singular: uma mente brilhante que ama aprender, rir e enxergar a beleza nas entrelinhas. Estar com ela é ter a certeza de que a inteligência e a doçura podem, sim, coexistir em perfeita harmonia.
+                    </p>
+                    <div class="gemini-pill-tags">
+                        <span>✦ Intelecto Límpido</span>
+                        <span>✦ Alma de Literatura</span>
+                        <span>✦ Carisma de Mercúrio</span>
+                        <span>✦ Leveza do Ar</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="psycho-editorial-grid">
@@ -793,6 +927,61 @@
             <span>Fotos</span>
         </a>
     </nav>
+
+    <!-- MODAL DE IMERSÃO TOTAL: CARTA SECRETA À LUZ DE VELAS -->
+    <div class="candlelight-overlay" id="candlelight-modal" aria-hidden="true">
+        <div class="candlelight-vignette" onclick="closeCandlelightLetter()"></div>
+        <div class="candlelight-stage">
+            <div class="candle-stand">
+                <div class="flicker-halo"></div>
+                <div class="flame-body"></div>
+                <div class="flame-core"></div>
+                <div class="candle-wick"></div>
+                <div class="candle-stem"></div>
+                <div class="candle-brass-base"></div>
+            </div>
+            
+            <div class="candle-parchment-scroll">
+                <button class="scroll-close-corner" onclick="closeCandlelightLetter()" aria-label="Fechar carta">&times;</button>
+                <div class="scroll-header">
+                    <span class="scroll-symbol">✦ ❦ ✦</span>
+                    <span class="scroll-title">À Minha Estrela Mais Bonita</span>
+                    <span class="scroll-date">13 de Junho • Segredo Revelado</span>
+                </div>
+                <div class="scroll-body">
+                    <p class="scroll-paragraph">
+                        <span class="scroll-drop-cap">Q</span>uando a noite silencia o ritmo frenético do mundo e as luzes se apagam, é a sua lembrança que permanece iluminando os meus pensamentos com uma serenidade que não cabe em teorias.
+                    </p>
+                    <p class="scroll-paragraph">
+                        Eu não precisava de tratados de filosofia nem de cartas de tarô para saber o quanto você é especial, mas criei cada detalhe deste universo para que você nunca, em hipótese alguma, duvide da grandeza da sua luz. Em um cosmos infinito, encontrar a sua doçura, a sua inteligência brilhante e a elegância rara com que você existe é o presente mais bonito que o destino poderia me conceder.
+                    </p>
+                    <p class="scroll-paragraph">
+                        Obrigado por ser esse refúgio de afeto, por cada conversa que faz o tempo parar e pela leveza incomparável do seu riso. Onde quer que o tempo nos leve, a minha admiração por você já está gravada entre as estrelas.
+                    </p>
+                </div>
+                <div class="scroll-signature">
+                    <div class="scroll-seal" title="Chancela de Afeto">A·V</div>
+                    <div class="scroll-sign-text">
+                        <span>Com todo o meu carinho, cuidado e verdade,</span>
+                        <strong class="scroll-name">Sempre ao seu lado ❤️</strong>
+                    </div>
+                </div>
+                <button class="btn-blow-candle" onclick="closeCandlelightLetter()">
+                    <i class="fa-solid fa-wind"></i>
+                    <span>Soprar a vela e guardar a carta</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST DE LEMBRANÇA SALVA -->
+    <div class="bookmark-toast" id="bookmark-toast" role="alert" aria-live="polite">
+        <i class="fa-solid fa-ribbon"></i>
+        <div class="toast-content">
+            <strong id="toast-title">Lembrança Guardada ✧</strong>
+            <small id="toast-message">Frase copiada com carinho para o seu celular.</small>
+        </div>
+    </div>
 
     <!-- LIGHTBOX MODAL PARA AS FOTOS -->
     <div class="lightbox-modal" id="lightbox" onclick="closeLightbox(event)">
