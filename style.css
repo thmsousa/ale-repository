@@ -2201,6 +2201,7 @@ body.js-loaded .reveal-item.revealed {
     }
 
     .navbar {
+        position: absolute;
         width: 100%;
         top: 0;
         left: 0;
@@ -2231,6 +2232,10 @@ body.js-loaded .reveal-item.revealed {
 
     .nav-links {
         display: none;
+    }
+
+    .bookmark-toast {
+        top: max(20px, env(safe-area-inset-top));
     }
 
     .hero-section {
